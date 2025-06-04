@@ -1,8 +1,32 @@
 import logo from "../assets/logo.png";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { logout, user } = useContext(AuthContext);
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Logout successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: error.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
   const links = (
     <>
       <li>
@@ -47,20 +71,33 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
-          <button className="relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-mono font-medium tracking-tighter hover:text-white  rounded-lg group">
+        {user ? (
+          <button
+            onClick={handleLogout}
+            className="relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-mono font-medium tracking-tighter hover:text-white  rounded-lg group"
+          >
             <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500  rounded-full group-hover:w-56  group-hover:h-56"></span>
             <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30  bg-gradient-to-b from-transparent via-transparent  "></span>
-            <span className="relative">Login</span>
+            <span className="relative">Logout</span>
           </button>
-        </Link>
-        <Link to="/register">
-          <button className="relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-mono font-medium tracking-tighter hover:text-white  rounded-lg group">
-            <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500  rounded-full group-hover:w-56  group-hover:h-56"></span>
-            <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30  bg-gradient-to-b from-transparent via-transparent  "></span>
-            <span className="relative">Register</span>
-          </button>
-        </Link>
+        ) : (
+          <>
+            <Link to="/login">
+              <button className="relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-mono font-medium tracking-tighter hover:text-white  rounded-lg group">
+                <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500  rounded-full group-hover:w-56  group-hover:h-56"></span>
+                <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30  bg-gradient-to-b from-transparent via-transparent  "></span>
+                <span className="relative">Login</span>
+              </button>
+            </Link>
+            <Link to="/register">
+              <button className="relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-mono font-medium tracking-tighter hover:text-white  rounded-lg group">
+                <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-blue-500  rounded-full group-hover:w-56  group-hover:h-56"></span>
+                <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30  bg-gradient-to-b from-transparent via-transparent  "></span>
+                <span className="relative">Register</span>
+              </button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
