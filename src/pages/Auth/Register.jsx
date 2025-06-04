@@ -1,8 +1,55 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const { register, updateUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.currentPassword.value;
+    const photo = e.target.photoURL.value;
+    const passwordRegExp = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (passwordRegExp.test(password) === false) {
+      alert(
+        "Password must be at least Six characters includeing  one upper and lower case."
+      );
+      return;
+    }
+    register(email, password)
+      .then((result) => {
+        const users = result.user;
+        console.log(users);
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {})
+          .catch((error) => {});
+
+        navigate("/");
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Register successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        // console.log(error);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: error.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+    // console.log(name, email, password, photo);
+  };
   return (
     <div>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto mt-20">
@@ -10,7 +57,7 @@ const Register = () => {
           Register <span className=" text-black ">Now</span>
         </h2>
         <div className="card-body">
-          <form className="fieldset">
+          <form onSubmit={handleRegister} className="fieldset">
             {/* Name */}
             <label className="label">Name</label>
             <input
