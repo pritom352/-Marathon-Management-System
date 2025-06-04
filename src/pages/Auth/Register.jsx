@@ -5,7 +5,8 @@ import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { register, updateUser, googleLogin } = useContext(AuthContext);
+  const { register, updateUser, googleLogin, setUser } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
@@ -25,8 +26,18 @@ const Register = () => {
         const users = result.user;
         console.log(users);
         updateUser({ displayName: name, photoURL: photo })
-          .then(() => {})
-          .catch((error) => {});
+          .then(() => {
+            setUser({ ...users, displayName: name, photoURL: photo });
+          })
+          .catch((error) => {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: error.message,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          });
 
         navigate("/");
 
