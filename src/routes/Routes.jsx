@@ -1,0 +1,57 @@
+import { createBrowserRouter } from "react-router";
+import Home from "../pages/Home/Home";
+import Login from "../pages/Auth/Login";
+import Register from "../pages/Auth/Register";
+import Marathons from "../pages/Marathons/Marathons";
+import MarathonDetails from "../pages/Marathons/MarathonDetails";
+import DashboardLayout from "../layouts/DashboardLayout";
+import AddMarathon from "../pages/Dashboard/AddMarathon";
+import MyMarathons from "../pages/Dashboard/MyMarathons";
+import MyApplies from "../pages/Dashboard/MyApplies";
+import NotFound from "../pages/NotFound/NotFound";
+import MainLayout from "../layouts/MainLayout";
+import PrivateRoute from "./PrivateRoute";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/login", element: <Login /> },
+      { path: "/register", element: <Register /> },
+      {
+        path: "/marathons",
+        element: (
+          <PrivateRoute>
+            <Marathons />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/marathon/:id",
+        element: (
+          <PrivateRoute>
+            <MarathonDetails />
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      { path: "add-marathon", element: <AddMarathon /> },
+      { path: "my-marathons", element: <MyMarathons /> },
+      { path: "my-applies", element: <MyApplies /> },
+    ],
+  },
+  { path: "*", element: <NotFound /> },
+]);
+
+export default router;
