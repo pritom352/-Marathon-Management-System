@@ -30,14 +30,20 @@ const Navbar = () => {
       });
   };
   const links = (
-    <>
-      <li>
-        <NavLink>Home</NavLink>
-      </li>
-      <li>
-        <NavLink>Marathons</NavLink>
-      </li>
-    </>
+    <div className=" flex gap-4">
+      <NavLink>
+        <p className="group cursor-pointer relative">
+          Home
+          <span className=" absolute bg-blue-500 h-[2px] group-hover:w-full left-0 w-0 -bottom-1 duration-200"></span>
+        </p>
+      </NavLink>
+      <NavLink>
+        <p className="group cursor-pointer relative">
+          Marathons
+          <span className=" absolute bg-blue-500 h-[2px] group-hover:w-full left-0 w-0 -bottom-1 duration-200"></span>
+        </p>
+      </NavLink>
+    </div>
   );
   return (
     <div className="navbar bg-base-100 shadow-sm">
