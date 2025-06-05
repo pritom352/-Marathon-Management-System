@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Banner from "./Banner";
 import MarathonsSections from "./MarathonsSections";
+import { useLoaderData } from "react-router";
 
 const Home = () => {
+  const data = useLoaderData();
+  const [marathonsData, setMarathonsData] = useState(data?.data || []);
+  // console.log(data.data);
   return (
     <div>
       <Banner></Banner>
-      <MarathonsSections></MarathonsSections>
+      <MarathonsSections marathonsData={marathonsData}></MarathonsSections>
     </div>
   );
 };

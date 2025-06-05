@@ -11,13 +11,18 @@ import MyApplies from "../pages/Dashboard/MyApplies";
 import NotFound from "../pages/NotFound/NotFound";
 import MainLayout from "../layouts/MainLayout";
 import PrivateRoute from "./PrivateRoute";
+import axios from "axios";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
     children: [
-      { path: "/", element: <Home /> },
+      {
+        path: "/",
+        loader: () => axios("http://localhost:3000/data"),
+        element: <Home />,
+      },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       {
