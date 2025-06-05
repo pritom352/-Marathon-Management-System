@@ -6,7 +6,7 @@ import { useLoaderData } from "react-router";
 const Home = () => {
   const data = useLoaderData();
   const [marathonsData, setMarathonsData] = useState(data?.data || []);
-  // console.log(data.data);
+  console.log(marathonsData);
   return (
     <div>
       <Banner></Banner>

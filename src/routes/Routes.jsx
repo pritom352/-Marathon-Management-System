@@ -27,11 +27,8 @@ const router = createBrowserRouter([
       { path: "/register", element: <Register /> },
       {
         path: "/marathons",
-        element: (
-          <PrivateRoute>
-            <Marathons />
-          </PrivateRoute>
-        ),
+        loader: () => axios("http://localhost:3000/allData"),
+        element: <Marathons />,
       },
       {
         path: "/marathon/:id",

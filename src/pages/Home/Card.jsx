@@ -1,7 +1,7 @@
 import React from "react";
 
 const Card = ({ marathonData }) => {
-  console.log(marathonData);
+  //   console.log(marathonData);
   const {
     image,
     registrationStartDate,
