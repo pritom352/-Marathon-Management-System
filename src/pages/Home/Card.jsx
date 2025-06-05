@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Card = ({ marathonData }) => {
   //   console.log(marathonData);
@@ -32,12 +33,14 @@ const Card = ({ marathonData }) => {
           <span className=" font-bold">Registration End Date: </span>{" "}
           {registrationEndDate}
         </h4>
-        <button className="relative mt-2  items-center justify-start inline-block px-3 py-2 overflow-hidden font-medium transition-all bg-white rounded-full hover:bg-blue-600 group">
-          <span className="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-blue-600 rounded-full"></span>
-          <span className="relative w-full text-left text-blue-600 transition-colors duration-200 ease-in-out group-hover:text-white">
-            See Details
-          </span>
-        </button>
+        <Link to={`/marathon/${_id}`}>
+          <button className="relative mt-2  items-center justify-start inline-block px-3 py-2 overflow-hidden font-medium transition-all bg-white rounded-full hover:bg-blue-600 group">
+            <span className="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-blue-600 rounded-full"></span>
+            <span className="relative w-full text-left text-blue-600 transition-colors duration-200 ease-in-out group-hover:text-white">
+              See Details
+            </span>
+          </button>
+        </Link>
       </div>
     </div>
   );

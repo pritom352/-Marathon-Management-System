@@ -32,11 +32,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/marathon/:id",
-        element: (
-          <PrivateRoute>
-            <MarathonDetails />
-          </PrivateRoute>
-        ),
+        loader: ({ params }) =>
+          axios(`http://localhost:3000/allData/${params.id}`),
+        element: <MarathonDetails />,
       },
     ],
   },
