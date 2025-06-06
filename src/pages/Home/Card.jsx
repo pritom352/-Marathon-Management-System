@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router";
+import { motion, useInView } from "motion/react";
 
 const Card = ({ marathonData }) => {
   //   console.log(marathonData);
@@ -11,38 +12,58 @@ const Card = ({ marathonData }) => {
     _id,
     location,
   } = marathonData;
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
 
   return (
-    <div className="  rounded-2xl bg-slate-50 p-3 shadow-2xl">
-      <img className=" rounded-2xl" src={image} alt="" />
-      <div className=" bg-white  rounded-2xl p-5 mt-4 shadow-2xl space-y-1.5">
-        <h4>
-          <span className=" font-bold">Title: </span>
-          {title}
-        </h4>
-        <h4>
-          <span className=" font-bold">Location: </span>
-          {location}
-        </h4>
+    <motion.div
+      ref={ref}
+      initial={{ scale: 0.5, opacity: 0 }}
+      // whileHover={{ scale: 1.03 }}
+      animate={
+        inView
+          ? {
+              scale: 1,
+              at: 4,
+              transition: { duration: 1 },
+              opacity: 10,
+              y: [50, 0],
+            }
+          : {}
+      }
+      whileTap={{ scale: 0.95 }}
+    >
+      <div className="  rounded-2xl bg-slate-50 p-3 shadow-2xl">
+        <img className=" rounded-2xl" src={image} alt="" />
+        <div className=" bg-white  rounded-2xl p-5 mt-4 shadow-2xl space-y-1.5">
+          <h4>
+            <span className=" font-bold">Title: </span>
+            {title}
+          </h4>
+          <h4>
+            <span className=" font-bold">Location: </span>
+            {location}
+          </h4>
 
-        <h4>
-          <span className=" font-bold">Registration Start Date: </span>
-          {registrationStartDate}
-        </h4>
-        <h4>
-          <span className=" font-bold">Registration End Date: </span>{" "}
-          {registrationEndDate}
-        </h4>
-        <Link to={`/marathon/${_id}`}>
-          <button className="relative mt-2  items-center justify-start inline-block px-3 py-2 overflow-hidden font-medium transition-all bg-white rounded-full hover:bg-blue-600 group">
-            <span className="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-blue-600 rounded-full"></span>
-            <span className="relative w-full text-left text-blue-600 transition-colors duration-200 ease-in-out group-hover:text-white">
-              See Details
-            </span>
-          </button>
-        </Link>
+          <h4>
+            <span className=" font-bold">Registration Start Date: </span>
+            {registrationStartDate}
+          </h4>
+          <h4>
+            <span className=" font-bold">Registration End Date: </span>{" "}
+            {registrationEndDate}
+          </h4>
+          <Link to={`/marathon/${_id}`}>
+            <button className="relative mt-2  items-center justify-start inline-block px-3 py-2 overflow-hidden font-medium transition-all bg-white rounded-full hover:bg-blue-600 group">
+              <span className="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-blue-600 rounded-full"></span>
+              <span className="relative w-full text-left text-blue-600 transition-colors duration-200 ease-in-out group-hover:text-white">
+                See Details
+              </span>
+            </button>
+          </Link>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

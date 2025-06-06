@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "motion/react";
 import { useLoaderData } from "react-router";
 
 const MarathonDetails = () => {
@@ -21,14 +22,24 @@ const MarathonDetails = () => {
   return (
     <div>
       <div className=" grid grid-cols-2 gap-10  rounded-2xl p-3 shadow-2xl bg-slate-50 mt-10">
-        <div className=" flex-1  rounded-2xl shadow-2xl">
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          transition={{ duration: 1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className=" flex-1  rounded-2xl shadow-2xl"
+        >
           <img
             className=" w-fit h-full rounded-2xl overflow-hidden "
             src={image}
             alt=""
           />
-        </div>
-        <div className=" flex-1  rounded-2xl shadow-2xl p-5">
+        </motion.div>
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          transition={{ duration: 1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className=" flex-1  rounded-2xl shadow-2xl p-5"
+        >
           <div className=" flex justify-between ">
             <div className=" space-y-2">
               <h1>
@@ -76,7 +87,7 @@ const MarathonDetails = () => {
               </h1>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
