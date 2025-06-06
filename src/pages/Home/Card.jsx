@@ -24,14 +24,17 @@ const Card = ({ marathonData }) => {
         inView
           ? {
               scale: 1,
-              at: 4,
+
               transition: { duration: 1 },
-              opacity: 10,
+              opacity: 1,
               y: [50, 0],
             }
           : {}
       }
-      whileTap={{ scale: 0.95 }}
+      whileHover={{
+        scale: 1.05,
+        transition: { duration: 0.3 },
+      }}
     >
       <div className="  rounded-2xl bg-slate-50 p-3 shadow-2xl">
         <img className=" rounded-2xl" src={image} alt="" />

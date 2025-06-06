@@ -30,7 +30,7 @@ const Navbar = () => {
       });
   };
   const links = (
-    <div className=" flex gap-4">
+    <div className=" flex gap-4 bg-white">
       <NavLink>
         <p className="group cursor-pointer relative">
           Home
