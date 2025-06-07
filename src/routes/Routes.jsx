@@ -6,12 +6,14 @@ import Marathons from "../pages/Marathons/Marathons";
 import MarathonDetails from "../pages/Marathons/MarathonDetails";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AddMarathon from "../pages/Dashboard/AddMarathon";
-import MyMarathons from "../pages/Dashboard/MyMarathons";
-import MyApplies from "../pages/Dashboard/MyApplies";
+// import MyMarathons from "../pages/Dashboard/MyMarathons";
+// import MyApplies from "../pages/Dashboard/MyApplies";
 import NotFound from "../pages/NotFound/NotFound";
 import MainLayout from "../layouts/MainLayout";
 import PrivateRoute from "./PrivateRoute";
 import axios from "axios";
+import MyApplies from "../pages/Dashboard/MyApplies";
+import MyMarathons from "../pages/Dashboard/MyMarathon/MyMarathons";
 
 const router = createBrowserRouter([
   {
@@ -42,9 +44,9 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <DashboardLayout />,
     children: [
-      { path: "add-marathon", element: <AddMarathon /> },
-      { path: "my-marathons", element: <MyMarathons /> },
-      { path: "my-applies", element: <MyApplies /> },
+      { path: "addMarathon", element: <AddMarathon /> },
+      { path: "myMarathons", element: <MyMarathons /> },
+      { path: "myApplies", element: <MyApplies /> },
     ],
   },
   { path: "*", element: <NotFound /> },

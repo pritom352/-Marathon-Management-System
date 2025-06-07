@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { logout, user } = useContext(AuthContext);
-  console.log(user?.photoURL);
+  // console.log(user?.photoURL);
 
   const handleLogout = () => {
     logout()
@@ -43,12 +43,12 @@ const Navbar = () => {
           <span className=" absolute bg-blue-500 h-[2px] group-hover:w-full left-0 w-0 -bottom-1 duration-200"></span>
         </p>
       </NavLink>
-      {/* <NavLink to="/dashboard">
+      <NavLink to="/dashboard">
         <p className="group cursor-pointer relative">
           Mar
           <span className=" absolute bg-blue-500 h-[2px] group-hover:w-full left-0 w-0 -bottom-1 duration-200"></span>
         </p>
-      </NavLink> */}
+      </NavLink>
     </div>
   );
   return (

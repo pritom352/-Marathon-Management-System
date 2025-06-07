@@ -11,7 +11,7 @@ const EventCard = ({ data }) => {
     registration_end,
     total_km,
   } = data;
-  console.log(data);
+  // console.log(data);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
 

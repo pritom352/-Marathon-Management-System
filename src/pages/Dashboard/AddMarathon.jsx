@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddMarathon = () => {
   const { user } = useContext(AuthContext);
@@ -26,6 +28,7 @@ const AddMarathon = () => {
     const distance = target.distance.value;
     const description = target.description.value;
     const image = target.image.value;
+    const email = target.email.value;
 
     const createdAt = target.createdAt.value;
 
@@ -42,7 +45,30 @@ const AddMarathon = () => {
       image,
       createdAt,
       totalRegistrations,
+      email,
     };
+    axios
+      .post("http://localhost:3000/data", marathon)
+      .then((result) => {
+        if (result?.data?.acknowledged) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: `${error.message}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
     console.log(marathon);
   };
 
