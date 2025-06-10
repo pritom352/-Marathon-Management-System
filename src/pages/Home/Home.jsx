@@ -1,8 +1,9 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Banner from "./Banner";
 import MarathonsSections from "./MarathonsSections";
 import { useLoaderData } from "react-router";
 import UpcomingMarathons from "../UpcomingEvents/UpcomingMarathons";
+import Reviews from "./Reviews";
 // import UpcomingMarathons from "../UpcomingEvents/UpcomingMarathons";
 
 const Home = () => {
@@ -10,7 +11,16 @@ const Home = () => {
 
   const data = useLoaderData();
   const [marathonsData, setMarathonsData] = useState(data?.data || []);
-  // console.log(marathonsData);
+  const [textimonials, setTextimonials] = useState([]);
+
+  useEffect(() => {
+    fetch("revew.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setTextimonials(data);
+      });
+  }, []);
+  console.log(textimonials);
   return (
     <div>
       <Banner></Banner>
@@ -21,6 +31,7 @@ const Home = () => {
           upcomingApi={upcomingApi}
         ></UpcomingMarathons>
       </Suspense>
+      <Reviews textimonials={textimonials}></Reviews>
     </div>
   );
 };

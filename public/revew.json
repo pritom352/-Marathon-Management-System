@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Adnan Rahman",
+    "image": "https://i.pravatar.cc/40?img=1",
+    "marathon": "Dhaka City Marathon",
+    "review": "Participating in the marathon was one of the best experiences of my life. The atmosphere was amazing and the event was very professionally managed.",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Sabiha Tasnim",
+    "image": "https://i.pravatar.cc/40?img=3",
+    "marathon": "Chattogram Run",
+    "review": "Joining the marathon for the first time was truly exciting. The organizers were very helpful and the whole event was well-structured.",
+    "rating": 4.5
+  },
+  {
+    "id": 3,
+    "name": "Rafiqul Islam",
+    "image": "https://i.pravatar.cc/40?img=4",
+    "marathon": "Sylhet Marathon",
+    "review": "It was an amazing day! Running helped me reconnect with my body and mind. Thanks to the organizers for a great experience.",
+    "rating": 5
+  },
+  {
+    "id": 4,
+    "name": "Maria Haque",
+    "image": "https://i.pravatar.cc/40?img=5",
+    "marathon": "Rajshahi Marathon",
+    "review": "I've participated in marathons before, but this event was uniquely enjoyable. Everything was organized perfectly.",
+    "rating": 4
+  },
+  {
+    "id": 5,
+    "name": "Tanvir Hasan",
+    "image": "https://i.pravatar.cc/40?img=6",
+    "marathon": "Barisal Marathon",
+    "review": "The scenic route along the river made the entire experience unforgettable. I look forward to joining again next year!",
+    "rating": 4.8
+  },
+  {
+    "id": 6,
+    "name": "Nusrat Jahan",
+    "image": "https://i.pravatar.cc/40?img=7",
+    "marathon": "Comilla Winter Run",
+    "review": "A well-coordinated event with great support for runners. It was fun and challenging at the same time.",
+    "rating": 4.2
+  },
+  {
+    "id": 7,
+    "name": "Zahidul Kabir",
+    "image": "https://i.pravatar.cc/40?img=8g",
+    "marathon": "Khulna  Marathon",
+    "review": "Loved the eco-friendly approach of this marathon. Water stations were well-placed and volunteers were very helpful.",
+    "rating": 4.7
+  }
+]

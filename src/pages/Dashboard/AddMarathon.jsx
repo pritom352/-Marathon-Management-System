@@ -14,7 +14,7 @@ const AddMarathon = () => {
   const day = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
-  const today = `${day}/${month}/${year}`;
+  const today = `${day}/${month + 1}/${year}`;
   console.log(day, month, year);
   const [createdAt, setCreatedAt] = useState(today);
   const handleAddMarathon = (e) => {
@@ -191,7 +191,7 @@ const AddMarathon = () => {
               className="border-0 border-b-1 rounded-b-none  text-black font-semibold  w-full"
               selected={createdAt}
               disabled
-              onChange={(date) => setEndRegistration(date)}
+              onChange={(date) => setCreatedAt(date)}
             />
           </div>
         </div>

@@ -40,13 +40,13 @@ const MyMarathons = () => {
             </tr>
           </thead>
           <tbody>
-            {myMarathonList?.map((data, index) => (
+            {myMarathonList?.map((myMarathon, index) => (
               <MyMarathonTable
-                data={data}
+                myMarathon={myMarathon}
                 myMarathonList={myMarathonList}
                 setMyMarathonList={setMyMarathonList}
                 index={index}
-                key={data._id}
+                key={myMarathon._id}
               ></MyMarathonTable>
             ))}
           </tbody>
