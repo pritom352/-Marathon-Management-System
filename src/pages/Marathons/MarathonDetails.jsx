@@ -21,7 +21,7 @@ const MarathonDetails = () => {
 
   return (
     <div>
-      <div className=" grid grid-cols-2 gap-10  rounded-2xl p-3 shadow-2xl bg-slate-50 mt-10">
+      <div className=" grid   lg:grid-cols-2 gap-4 md:gap-7 lg:gap-10  rounded-2xl p-3 shadow-2xl bg-slate-50 mt-10">
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           transition={{ duration: 1 }}
@@ -38,10 +38,10 @@ const MarathonDetails = () => {
           initial={{ scale: 0.5, opacity: 0 }}
           transition={{ duration: 1 }}
           animate={{ opacity: 1, scale: 1 }}
-          className=" flex-1  rounded-2xl shadow-2xl p-5"
+          className=" flex-1 border h-[300px] overflow-scroll  rounded-2xl shadow-2xl p-5"
         >
-          <div className=" flex justify-between ">
-            <div className=" space-y-2">
+          <div className=" md:flex justify-between  ">
+            <div className="space-y-0.5 md:space-y-2">
               <h1>
                 <span className="font-bold">Title: </span>
                 {title}
@@ -65,7 +65,7 @@ const MarathonDetails = () => {
           <p className=" my-6 p-3 bg-white shadow-2xs rounded-2xl">
             {description}
           </p>
-          <div className=" flex justify-between ">
+          <div className=" md:flex justify-between ">
             <div className=" space-y-2">
               <h1>
                 <span className="font-bold">Registration Start Date: </span>
@@ -82,7 +82,7 @@ const MarathonDetails = () => {
                 {registrationEndDate}
               </h1>
               <h1>
-                <span className="font-bold">Total Registrations: </span>
+                <span className="font-bold ">Total Registrations: </span>
                 {totalRegistrations}
               </h1>
             </div>
