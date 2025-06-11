@@ -38,7 +38,7 @@ const Card = ({ marathonData }) => {
     >
       <div className="  rounded-2xl bg-slate-50 p-3 shadow-2xl">
         <img className=" h-[150px] w-full rounded-2xl" src={image} alt="" />
-        <div className=" bg-white  rounded-2xl p-5 mt-4 shadow-2xl space-y-0.5 md:space-y-1.5">
+        <div className="  rounded-2xl p-5 mt-4 shadow-2xl space-y-0.5 md:space-y-1.5">
           <h4 className=" text-[14px] md:text-[16px]">
             <span className=" font-bold">Title: </span>
             {title}

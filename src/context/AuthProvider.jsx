@@ -37,6 +37,17 @@ const AuthProvider = ({ children }) => {
       unSubscribe();
     };
   }, []);
+
+  //! theme
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
   const authData = {
     register,
     updateUser,
@@ -45,6 +56,8 @@ const AuthProvider = ({ children }) => {
     logout,
     user,
     setUser,
+    theme,
+    setTheme,
   };
   return <AuthContext value={authData}>{children}</AuthContext>;
 };

@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute";
 import axios from "axios";
 import MyApplies from "../pages/Dashboard/MyApplies";
 import MyMarathons from "../pages/Dashboard/MyMarathon/MyMarathons";
+import MarathonRegistration from "../pages/marathonRegistration/marathonRegistration";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,12 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           axios(`http://localhost:3000/allData/${params.id}`),
         element: <MarathonDetails />,
+      },
+      {
+        path: "/marathonRegistration/:id",
+        loader: ({ params }) =>
+          axios(`http://localhost:3000/allData/${params.id}`),
+        element: <MarathonRegistration></MarathonRegistration>,
       },
     ],
   },
