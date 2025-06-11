@@ -1,9 +1,44 @@
+import axios from "axios";
 import { address, tr } from "motion/react-client";
 import React from "react";
 
 const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
-  const { title, startDate, firstName, lastName, number, email, address } =
+  const { title, startDate, firstName, lastName, number, email, address, _id } =
     myApply;
+
+  const handleRegistrationUpdate = (e) => {
+    e.preventDefault();
+    // console.log("hello world");
+    const target = e.target;
+    const title = target.title.value;
+    const startDate = target.startDate.value;
+    const email = target.email.value;
+    const firstName = target.firstName.value;
+    const lastName = target.lastName.value;
+    const address = target.address.value;
+    const number = target.contactNumber.value;
+    if (number.length < 11 && number.length > 11) {
+      return alert("Number must be 11 number's");
+    }
+    // if(number.length < 11)
+    const data = {
+      title,
+      startDate,
+      firstName,
+      lastName,
+      email,
+      address,
+      number,
+    };
+    axios
+      .put(`http://localhost:3000/registerdData/${_id}`, data)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <tr>
       <td className="text-center">{index + 1}</td>
@@ -27,8 +62,7 @@ const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
             <h2 className="text-2xl text-center mb-10">
               Update registration details
             </h2>
-            <form action="">
-              {" "}
+            <form onSubmit={handleRegistrationUpdate}>
               <div className=" flex flex-col md:flex-row lg:flex-row justify-between gap-5 md:gap-8 lg:gap-16">
                 <div className="  w-full">
                   {/* Title */}

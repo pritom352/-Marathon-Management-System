@@ -117,13 +117,13 @@ const MyMarathonTable = ({
         console.log(result);
       })
       .catch((error) => {
-        // Swal.fire({
-        //   position: "top-end",
-        //   icon: "error",
-        //   title: `${error.message}`,
-        //   showConfirmButton: false,
-        //   timer: 1500,
-        // });
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: `${error.message}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(error);
       });
   };
