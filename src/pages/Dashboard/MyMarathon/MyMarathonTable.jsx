@@ -136,11 +136,6 @@ const MyMarathonTable = ({
       <td className="text-center">{totalRegistrations}</td>
       <td className="text-center">
         <div className="flex gap-5">
-          {/* <button className="px-3 py-2 relative rounded group overflow-hidden font-medium bg-purple-50 text-purple-600 inline-block">
-              <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-500 group-hover:h-full opacity-90"></span>
-              <span className="relative group-hover:text-white">Update</span>
-            </button> */}
-          {/* You can open the modal using document.getElementById('ID').showModal() method */}
           <button
             className=" btn px-3 py-2 relative rounded group overflow-hidden font-medium bg-purple-50 text-purple-600 inline-block"
             onClick={() =>
