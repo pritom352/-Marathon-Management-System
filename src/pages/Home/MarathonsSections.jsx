@@ -28,7 +28,7 @@ const MarathonsSections = ({ marathonsData }) => {
         Featured <span className="text-black">Marathons</span>
       </motion.h1>
 
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5  ">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 bg-indigo-100 p-6 rounded-2xl  ">
         {marathonsData.map((marathonData) => (
           <Card marathonData={marathonData} key={marathonData._id}></Card>
         ))}

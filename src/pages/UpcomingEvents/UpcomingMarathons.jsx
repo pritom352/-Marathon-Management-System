@@ -28,7 +28,7 @@ const UpcomingMarathons = ({ upcomingApi }) => {
       >
         Upcoming <span className="text-black">Marathons</span>
       </motion.h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 bg-slate-50  p-5 rounded-2xl shadow-2xs">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 bg-indigo-100  p-6 rounded-2xl shadow-2xs">
         {data.map((data) => (
           <EventCard key={data.id} data={data}></EventCard>
         ))}

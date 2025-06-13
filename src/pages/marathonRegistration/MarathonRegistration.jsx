@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
@@ -7,9 +7,14 @@ import axios from "axios";
 const MarathonRegistration = () => {
   const data = useLoaderData();
   console.log(data);
-  const { title, marathonStartDate } = data.data;
+  const { title, marathonStartDate, _id } = data.data;
+  console.log(_id);
+
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // const [registerdcount, setRegisterdCount] = useState(
+  //   data?.data.totalRegistrations.includes(user?.email)
+  // );
+  // console.log("registerd", registerd);
   const handleRegistration = (e) => {
     e.preventDefault();
     console.log("hello world");
@@ -34,6 +39,16 @@ const MarathonRegistration = () => {
       .post("http://localhost:3000/registerdData", data)
       .then((result) => {
         if (result?.data?.acknowledged) {
+          axios
+            .patch(`http://localhost:3000/totalRegistration/${_id}`, {
+              email: user?.email,
+            })
+            .then((result) => {
+              console.log(result);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
           Swal.fire({
             position: "top-end",
             icon: "success",

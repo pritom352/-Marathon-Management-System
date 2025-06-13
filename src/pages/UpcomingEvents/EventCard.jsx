@@ -33,7 +33,7 @@ const EventCard = ({ data }) => {
       }
       className="flex gap-5  group rounded-2xl "
     >
-      <div className=" h-full w-1/7  bg-green-500 opacity-70  hidden group-hover:block  rounded-2xl shadow-2xl "></div>
+      <div className=" h-full w-0  bg-green-500 opacity-70   group-hover:w-9  duration-500   rounded-2xl shadow-2xl "></div>
       <div className=" w-full p-5  text-center bg-white space-y-1 rounded-2xl  shadow-2xl">
         <h1 className=" font-bold">Title: {name}</h1>
         <p>

@@ -21,7 +21,7 @@ const MyMarathonTable = ({
     // distance,
     description,
     image,
-    // createdAt,
+    createdAt,
     totalRegistrations,
     // email,
   } = myMarathon;
@@ -137,194 +137,180 @@ const MyMarathonTable = ({
       <td className="text-center">
         <div className="flex gap-5">
           <button
-            className=" btn px-3 py-2 relative rounded group overflow-hidden font-medium bg-purple-50 text-purple-600 inline-block"
-            onClick={() =>
-              document.getElementById(`${myMarathon?._id}`).showModal()
-            }
+            className="btn"
+            onClick={() => document.getElementById("my_modal_2").showModal()}
           >
             open modal
           </button>
-          <dialog id={myMarathon?._id} className="modal">
-            <div className="modal-box w-11/12 max-w-5xl">
-              <h3 className="font-bold text-lg">Update Marathon</h3>
-
-              <div className="modal-action  w-full">
-                <form
-                  onSubmit={handleUpdate}
-                  className="space-y-4 p-5 w-full  rounded-2xl shadow-2xl"
-                >
-                  <div className=" flex flex-col md:flex-row lg:flex-row justify-between gap-5 md:gap-8 lg:gap-16">
-                    <div className="  w-full">
-                      {/* Title */}
-                      <label className="label font-bold">Task Title</label>
-                      <input
-                        type="text"
-                        value={myMarathon?.title}
-                        required
-                        name="title"
-                        className="input cursor-not-allowed border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-                        placeholder="Enter Title Name"
-                      />
-                    </div>
-                    {/* location */}
-                    <div className="  w-full">
-                      <label className="label font-bold">Location</label>
-                      <input
-                        type="text"
-                        defaultValue={location}
-                        required
-                        name="location"
-                        className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-                        placeholder="Enter Location"
-                      />
-                    </div>
+          <dialog id="my_modal_2" className="modal  w-full">
+            <div className="modal-box w-4/5">
+              <h3 className="font-bold text-lg">Hello!</h3>
+              <form
+                onSubmit={handleUpdate}
+                className="space-y-4 p-5 w-full  rounded-2xl shadow-2xl"
+              >
+                <div className=" flex flex-col md:flex-row lg:flex-row justify-between gap-5 md:gap-8 lg:gap-16">
+                  <div className="  w-full">
+                    {/* Title */}
+                    <label className="label font-bold">Task Title</label>
+                    <input
+                      type="text"
+                      value={myMarathon?.title}
+                      required
+                      name="title"
+                      className="input cursor-not-allowed border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      placeholder="Enter Title Name"
+                    />
                   </div>
-                  {/* Description */}
-                  <div className=" mb-5 md:mb-8 lg:mb-12">
-                    <label className="label font-bold">Description</label>
+                  {/* location */}
+                  <div className="  w-full">
+                    <label className="label font-bold">Location</label>
+                    <input
+                      type="text"
+                      defaultValue={location}
+                      required
+                      name="location"
+                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      placeholder="Enter Location"
+                    />
+                  </div>
+                </div>
+                {/* Description */}
+                <div className=" mb-5 md:mb-8 lg:mb-12">
+                  <label className="label font-bold">Description</label>
 
-                    <textarea
-                      name="description"
+                  <textarea
+                    name="description"
+                    defaultValue={description}
+                    required
+                    className="textarea  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    placeholder="Description"
+                  ></textarea>
+                </div>
+                <div className=" flex flex-col md:flex-row justify-between gap-5 md:gap-8 lg:gap-16 ">
+                  <div className="w-full">
+                    {/* Running Distance */}
+                    <label className="label font-bold">Running Distance</label>
+                    <select
+                      name="distance"
                       defaultValue={description}
                       required
-                      className="textarea  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-                      placeholder="Description"
-                    ></textarea>
+                      className="select validator border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    >
+                      <option value="" disabled></option>
+                      <option value="25 KM">25 KM</option>
+                      <option value="10 KM">10 KM</option>
+                      <option value="3 KM">3 KM</option>
+                    </select>
+                    <p className="validator-hint">Required</p>
                   </div>
-                  <div className=" flex flex-col md:flex-row justify-between gap-5 md:gap-8 lg:gap-16 ">
-                    <div className="w-full">
-                      {/* Running Distance */}
-                      <label className="label font-bold">
-                        Running Distance
-                      </label>
-                      <select
-                        name="distance"
-                        defaultValue={description}
-                        required
-                        className="select validator border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-                      >
-                        <option value="" disabled></option>
-                        <option value="25 KM">25 KM</option>
-                        <option value="10 KM">10 KM</option>
-                        <option value="3 KM">3 KM</option>
-                      </select>
-                      <p className="validator-hint">Required</p>
-                    </div>
-                    {/* Marathon Image */}
-                    <div className=" w-full">
-                      <label className="label font-bold">Marathon Image</label>
+                  {/* Marathon Image */}
+                  <div className=" w-full">
+                    <label className="label font-bold">Marathon Image</label>
 
-                      <input
-                        type="url"
-                        defaultValue={image}
-                        required
-                        name="image"
-                        className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-                        placeholder="Enter image URL"
-                      />
-                    </div>
+                    <input
+                      type="url"
+                      defaultValue={image}
+                      required
+                      name="image"
+                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      placeholder="Enter image URL"
+                    />
                   </div>
-                  {/* ------------------------------------------- */}
+                </div>
+                {/* ------------------------------------------- */}
 
-                  <div className=" flex flex-col md:flex-row justify-between gap-5 md:gap-8 lg:gap-16 ">
-                    {/* Start Registration */}
-                    <div className=" w-full  flex flex-col gap-3 ">
-                      <label className="label font-bold">
-                        {" "}
-                        Start Registration
-                      </label>
-                      <DatePicker
-                        className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-                        value={registrationStartDate}
-                        selected={startRegistration}
-                        onChange={(date) => setStartRegistration(date)}
-                        name="registrationStartDate"
-                      />
-                      {/* <DatePicker
-                        placeholderText="update your Date"
-                        className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-                        selected={startRegistration}
-                        onChange={(date) => setStartRegistration(date)}
-                        name="registrationStartDate"
-                      /> */}
-                    </div>
-                    {/*  End Registration */}
-                    <div className=" w-full  flex flex-col gap-3 ">
-                      <label className="label font-bold">
-                        End Registration
-                      </label>
-                      <DatePicker
-                        placeholderText="update your Date"
-                        className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-                        selected={endRegistration}
-                        onChange={(date) => setEndRegistration(date)}
-                        name="registrationEndDate"
-                      />
-                    </div>
+                <div className=" flex flex-col md:flex-row justify-between gap-5 md:gap-8 lg:gap-16 ">
+                  {/* Start Registration */}
+                  <div className=" w-full  flex flex-col gap-3 ">
+                    <label className="label font-bold">
+                      Start Registration
+                    </label>
+                    <DatePicker
+                      className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      // value={registrationStartDate}
+                      selected={startRegistration}
+                      onChange={(date) => setStartRegistration(date)}
+                      name="registrationStartDate"
+                    />
                   </div>
-                  {/* -------------------------------------------- */}
-                  {/* ------------------------------------------- */}
-                  <div className=" flex flex-col md:flex-row justify-between gap-5 md:gap-8 lg:gap-16 ">
-                    {/* Marathon Start Date */}
-                    <div className=" w-full  flex flex-col gap-3 ">
-                      <label className="label font-bold">
-                        Marathon Start Date
-                      </label>
-                      <input
-                        type="text"
-                        value={marathonStartDate}
-                        // disabled
-                        name="location"
-                        className="input cursor-not-allowed border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-                        placeholder="Enter Location"
-                      />
-                    </div>
-                    {/* Created At   */}
-                    <div className=" w-full  flex flex-col gap-3 ">
-                      <label className="label font-bold">Created At</label>
-                      <DatePicker
-                        name="createdAt"
-                        className="border-0 border-b-1 rounded-b-none  text-black font-semibold  w-full"
-                        selected={updateCreatedAt}
-                        disabled
-                        onChange={(date) => setupdateCreatedAt(date)}
-                      />
-                    </div>
+                  {/*  End Registration */}
+                  <div className=" w-full  flex flex-col gap-3 ">
+                    <label className="label font-bold">End Registration</label>
+                    <DatePicker
+                      placeholderText="update your Date"
+                      className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      selected={endRegistration}
+                      onChange={(date) => setEndRegistration(date)}
+                      name="registrationEndDate"
+                    />
                   </div>
-                  {/* -------------------------------------------- */}
-                  <div className=" flex flex-col md:flex-row gap-5 md:gap-8 lg:gap-16 justify-between">
-                    {/* email */}
-                    <div className=" w-full">
-                      <label className="label font-bold">email</label>
+                </div>
+                {/* -------------------------------------------- */}
+                {/* ------------------------------------------- */}
+                <div className=" flex flex-col md:flex-row justify-between gap-5 md:gap-8 lg:gap-16 ">
+                  {/* Marathon Start Date */}
+                  <div className=" w-full  flex flex-col gap-3 ">
+                    <label className="label font-bold">
+                      Marathon Start Date
+                    </label>
+                    <input
+                      type="text"
+                      // value={marathonStartDate}
+                      // disabled
+                      name="location"
+                      className="input cursor-not-allowed border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      placeholder="Enter Location"
+                    />
+                  </div>
+                  {/* Created At   */}
+                  <div className=" w-full  flex flex-col gap-3 ">
+                    <label className="label font-bold">Created At</label>
+                    <DatePicker
+                      name="createdAt"
+                      className="border-0 border-b-1 rounded-b-none  text-black font-semibold  w-full"
+                      selected={createdAt}
+                      disabled
+                      onChange={(date) => setupdateCreatedAt(date)}
+                    />
+                  </div>
+                </div>
+                {/* -------------------------------------------- */}
+                <div className=" flex flex-col md:flex-row gap-5 md:gap-8 lg:gap-16 justify-between">
+                  {/* email */}
+                  <div className=" w-full">
+                    <label className="label font-bold">email</label>
 
-                      <input
-                        type="email"
-                        name="email"
-                        defaultValue={user?.email || ""}
-                        disabled
-                        className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-                        placeholder="Your Email"
-                      />
-                    </div>
-                    {/* name */}
-                    <div className=" w-full">
-                      <label className="label font-bold">name</label>
-
-                      <input
-                        type="text"
-                        disabled
-                        defaultValue={user?.displayName || ""}
-                        className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-                        placeholder="Your Name"
-                      />
-                    </div>
+                    <input
+                      type="email"
+                      name="email"
+                      defaultValue={user?.email || ""}
+                      disabled
+                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      placeholder="Your Email"
+                    />
                   </div>
-                  <button className="flex mx-auto mt-4 md:mt-7 lg:mt-10 items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-white border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none">
-                    Add Task
-                  </button>
-                </form>
-              </div>
+                  {/* name */}
+                  <div className=" w-full">
+                    <label className="label font-bold">name</label>
+
+                    <input
+                      type="text"
+                      disabled
+                      defaultValue={user?.displayName || ""}
+                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      placeholder="Your Name"
+                    />
+                  </div>
+                </div>
+                <button className="flex mx-auto mt-4 md:mt-7 lg:mt-10 items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-white border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none">
+                  Add Task
+                </button>
+              </form>
             </div>
+            <form method="dialog" className="modal-backdrop">
+              <button>close</button>
+            </form>
           </dialog>
 
           <button

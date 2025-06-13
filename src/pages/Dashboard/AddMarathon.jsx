@@ -11,12 +11,12 @@ const AddMarathon = () => {
   const [endRegistration, setEndRegistration] = useState(null);
   const [marathonStartDate, setMarathonStartDate] = useState(null);
   const date = new Date();
-  const day = date.getDate();
-  const month = date.getMonth();
-  const year = date.getFullYear();
-  const today = `${day}/${month + 1}/${year}`;
-  console.log(day, month, year);
-  const [createdAt, setCreatedAt] = useState(today);
+  // const day = date.getDate();
+  // const month = date.getMonth();
+  // const year = date.getFullYear();
+  // const today = `${day}/${month + 1}/${year}`;
+  // console.log(day, month, year);
+  // const [createdAt, setCreatedAt] = useState(today);
   const handleAddMarathon = (e) => {
     e.preventDefault();
     const target = e.target;
@@ -31,8 +31,9 @@ const AddMarathon = () => {
     const email = target.email.value;
 
     const createdAt = target.createdAt.value;
+    console.log(registrationStartDate);
 
-    const totalRegistrations = 0;
+    const totalRegistrations = [];
 
     const marathon = {
       title,
@@ -189,9 +190,8 @@ const AddMarathon = () => {
             <DatePicker
               name="createdAt"
               className="border-0 border-b-1 rounded-b-none  text-black font-semibold  w-full"
-              selected={createdAt}
+              selected={date}
               disabled
-              onChange={(date) => setCreatedAt(date)}
             />
           </div>
         </div>

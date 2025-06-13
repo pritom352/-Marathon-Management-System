@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { motion } from "motion/react";
 import { Link, useLoaderData } from "react-router";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import { AuthContext } from "../../context/AuthContext";
 
 const MarathonDetails = () => {
   const data = useLoaderData();
@@ -18,6 +19,11 @@ const MarathonDetails = () => {
     totalRegistrations,
     _id,
   } = data.data;
+  const { user } = useContext(AuthContext);
+  const registerd = data?.data.totalRegistrations.includes(user?.email);
+
+  console.log("registerd", registerd);
+  console.log(totalRegistrations.length);
 
   const date = new Date();
   const day = date.getDate();
@@ -137,7 +143,7 @@ const MarathonDetails = () => {
               </h1>
               <h1>
                 <span className="font-bold">Total Registrations: </span>
-                {totalRegistrations}
+                {totalRegistrations.length}
               </h1>
             </div>
           </div>
@@ -146,10 +152,18 @@ const MarathonDetails = () => {
 
       <div className="border flex mt-12">
         {todayDateObj >= registrationStartDateObj &&
-        todayDateObj <= registrationEndDateObj ? (
+        todayDateObj <= registrationEndDateObj &&
+        registerd === false ? (
           <Link to={`/marathonRegistration/${_id}`}>
             <button className="btn border mx-auto">Register Now</button>
           </Link>
+        ) : (
+          ""
+        )}
+        {todayDateObj >= registrationStartDateObj &&
+        todayDateObj <= registrationEndDateObj &&
+        registerd === true ? (
+          <button className="btn border mx-auto ">Already Registered</button>
         ) : (
           ""
         )}

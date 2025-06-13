@@ -4,6 +4,7 @@ import MarathonsSections from "./MarathonsSections";
 import { useLoaderData } from "react-router";
 import UpcomingMarathons from "../UpcomingEvents/UpcomingMarathons";
 import Reviews from "./Reviews";
+import CountUpSection from "./CountUpSection";
 // import UpcomingMarathons from "../UpcomingEvents/UpcomingMarathons";
 
 const Home = () => {
@@ -32,6 +33,7 @@ const Home = () => {
         ></UpcomingMarathons>
       </Suspense>
       <Reviews textimonials={textimonials}></Reviews>
+      <CountUpSection></CountUpSection>
     </div>
   );
 };
