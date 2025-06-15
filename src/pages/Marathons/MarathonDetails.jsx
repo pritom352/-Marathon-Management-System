@@ -19,25 +19,36 @@ const MarathonDetails = () => {
     totalRegistrations,
     _id,
   } = data.data;
+
+  console.log(registrationStartDate);
+  console.log(registrationEndDate);
+  console.log(marathonStartDate);
+
   const { user } = useContext(AuthContext);
   const registerd = data?.data.totalRegistrations.includes(user?.email);
 
-  console.log("registerd", registerd);
-  console.log(totalRegistrations.length);
+  // console.log("registerd", registerd);
+  // console.log(totalRegistrations.length);
 
-  const date = new Date();
-  const day = date.getDate();
-  const month = date.getMonth();
-  const year = date.getFullYear();
-  const today = `${year}-${month + 1}-${day}`;
+  const today = new Date().toLocaleDateString("en-GB");
+  // const day = date.getDate();
+  // const month = date.getMonth();
+  // const year = date.getFullYear();
+  // const today = `${day}/${month + 1}/${year}`;
+  console.log(today);
 
-  const todayDateObj = new Date(today);
+  const todayDateObj = today;
   const registrationStartDateObj = new Date(registrationStartDate);
-  const registrationEndDateObj = new Date(registrationEndDate);
+  // console.log(registrationStartDate);
 
+  const registrationEndDateObj = new Date(registrationEndDate);
+  // console.log(registrationEndDateObj);
+  const [day, month, year] = marathonStartDate.split("/");
   const remainingTime = Math.floor(
-    (new Date(marathonStartDate).getTime() - new Date().getTime()) / 1000
+    (new Date(`${year}-${month}-${day}`).getTime() - new Date().getTime()) /
+      1000
   );
+  console.log("remainingTime", marathonStartDate);
 
   const getTimeParts = (time) => {
     const days = Math.floor(time / (60 * 60 * 24));

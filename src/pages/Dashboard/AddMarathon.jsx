@@ -9,7 +9,9 @@ const AddMarathon = () => {
   const { user } = useContext(AuthContext);
   const [startRegistration, setStartRegistration] = useState(null);
   const [endRegistration, setEndRegistration] = useState(null);
-  const [marathonStartDate, setMarathonStartDate] = useState(null);
+  const [startDate, setStartDate] = useState(null);
+  console.log(startDate);
+
   const date = new Date();
   // const day = date.getDate();
   // const month = date.getMonth();
@@ -21,9 +23,11 @@ const AddMarathon = () => {
     e.preventDefault();
     const target = e.target;
     const title = target.title.value;
-    const registrationStartDate = target.registrationStartDate.value;
-    const registrationEndDate = target.registrationEndDate.value;
-    const marathonStartDate = target.marathonStartDate.value;
+    const registrationStartDate = startRegistration.toLocaleDateString("en-GB");
+    const registrationEndDate = endRegistration.toLocaleDateString("en-GB");
+    const marathonStartDate = startDate.toLocaleDateString("en-GB");
+    console.log(marathonStartDate);
+
     const location = target.location.value;
     const distance = target.distance.value;
     const description = target.description.value;
@@ -157,7 +161,7 @@ const AddMarathon = () => {
               className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
               selected={startRegistration}
               onChange={(date) => setStartRegistration(date)}
-              name="registrationStartDate"
+              // name="registrationStartDate"
             />
           </div>
           {/*  End Registration */}
@@ -167,7 +171,7 @@ const AddMarathon = () => {
               className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
               selected={endRegistration}
               onChange={(date) => setEndRegistration(date)}
-              name="registrationEndDate"
+              // name="registrationEndDate"
             />
           </div>
         </div>
@@ -179,9 +183,9 @@ const AddMarathon = () => {
             <label className="label font-bold">Marathon Start Date</label>
             <DatePicker
               className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-              selected={marathonStartDate}
-              onChange={(date) => setMarathonStartDate(date)}
-              name="marathonStartDate"
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              // name="marathonStartDate"
             />
           </div>
           {/* Created At   */}

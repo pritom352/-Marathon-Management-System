@@ -14,9 +14,7 @@ const MyMarathonTable = ({
 }) => {
   const {
     title,
-    registrationStartDate,
-    registrationEndDate,
-    marathonStartDate,
+
     location,
     // distance,
     description,
@@ -27,18 +25,25 @@ const MyMarathonTable = ({
   } = myMarathon;
   console.log(myMarathon);
   const total = totalRegistrations;
-  console.log(registrationStartDate);
+  // console.log(registrationStartDate);
   const { user } = useContext(AuthContext);
-  const [startRegistration, setStartRegistration] = useState(null);
-  const [endRegistration, setEndRegistration] = useState(null);
-  // const [updateMarathonStartDate, setUpdateMarathonStartDate] = useState(null);
-  const date = new Date();
-  const day = date.getDate();
-  const month = date.getMonth();
-  const year = date.getFullYear();
-  const today = `${day}/${month + 1}/${year}`;
-  console.log(day, month, year);
-  const [updateCreatedAt, setupdateCreatedAt] = useState(today);
+  const [startRegistration, setStartRegistration] = useState(
+    new Date(myMarathon?.registrationStartDate?.split("/").reverse().join("/"))
+  );
+
+  const [endRegistration, setEndRegistration] = useState(
+    new Date(myMarathon?.registrationEndDate?.split("/").reverse().join("/"))
+  );
+  const [updateMarathonStartDate, setUpdateMarathonStartDate] = useState(
+    new Date(myMarathon?.marathonStartDate?.split("/").reverse().join("/"))
+  );
+  // const date = new Date();
+  // const day = date.getDate();
+  // const month = date.getMonth();
+  // const year = date.getFullYear();
+  // const today = `${day}/${month + 1}/${year}`;
+  // console.log(day, month, year);
+  // const [updateCreatedAt, setupdateCreatedAt] = useState(today);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -75,9 +80,10 @@ const MyMarathonTable = ({
     e.preventDefault();
     const target = e.target;
     const title = target.title.value;
-    const registrationStartDate = target.registrationStartDate.value;
-    const registrationEndDate = target.registrationEndDate.value;
-    const marathonStartDate = target.marathonStartDate.value;
+    const registrationStartDate = startRegistration.toLocaleDateString("en-GB");
+    const registrationEndDate = endRegistration.toLocaleDateString("en-GB");
+    const marathonStartDate =
+      updateMarathonStartDate.toLocaleDateString("en-GB");
     const location = target.location.value;
     const distance = target.distance.value;
     const description = target.description.value;
@@ -131,8 +137,8 @@ const MyMarathonTable = ({
     <tr>
       <td className="text-center">{index + 1}</td>
       <td className="text-center">{title}</td>
-      <td className="text-center">{registrationStartDate}</td>
-      <td className="text-center">{registrationEndDate}</td>
+      <td className="text-center">{myMarathon?.registrationStartDate}</td>
+      <td className="text-center">{myMarathon?.registrationEndDate}</td>
       <td className="text-center">{totalRegistrations}</td>
       <td className="text-center">
         <div className="flex gap-5">
@@ -155,7 +161,7 @@ const MyMarathonTable = ({
                     <label className="label font-bold">Task Title</label>
                     <input
                       type="text"
-                      value={myMarathon?.title}
+                      defaultValue={myMarathon?.title}
                       required
                       name="title"
                       className="input cursor-not-allowed border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
@@ -227,22 +233,18 @@ const MyMarathonTable = ({
                       Start Registration
                     </label>
                     <DatePicker
-                      className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-                      // value={registrationStartDate}
                       selected={startRegistration}
                       onChange={(date) => setStartRegistration(date)}
-                      name="registrationStartDate"
+                      // name="registrationStartDate"
                     />
                   </div>
                   {/*  End Registration */}
                   <div className=" w-full  flex flex-col gap-3 ">
                     <label className="label font-bold">End Registration</label>
                     <DatePicker
-                      placeholderText="update your Date"
-                      className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
                       selected={endRegistration}
                       onChange={(date) => setEndRegistration(date)}
-                      name="registrationEndDate"
+                      // name="registrationEndDate"
                     />
                   </div>
                 </div>
@@ -254,13 +256,10 @@ const MyMarathonTable = ({
                     <label className="label font-bold">
                       Marathon Start Date
                     </label>
-                    <input
-                      type="text"
-                      // value={marathonStartDate}
-                      // disabled
-                      name="location"
-                      className="input cursor-not-allowed border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
-                      placeholder="Enter Location"
+                    <DatePicker
+                      selected={updateMarathonStartDate}
+                      onChange={(date) => setUpdateMarathonStartDate(date)}
+                      // name="registrationEndDate"
                     />
                   </div>
                   {/* Created At   */}
@@ -271,7 +270,7 @@ const MyMarathonTable = ({
                       className="border-0 border-b-1 rounded-b-none  text-black font-semibold  w-full"
                       selected={createdAt}
                       disabled
-                      onChange={(date) => setupdateCreatedAt(date)}
+                      // onChange={(date) => setupdateCreatedAt(date)}
                     />
                   </div>
                 </div>

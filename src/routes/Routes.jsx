@@ -15,15 +15,23 @@ import axios from "axios";
 import MyApplies from "../pages/Dashboard/MyApplies";
 import MyMarathons from "../pages/Dashboard/MyMarathon/MyMarathons";
 import MarathonRegistration from "../pages/marathonRegistration/marathonRegistration";
+import Loader from "../components/Loader";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage></ErrorPage>,
+
+    hydrateFallbackElement: <Loader></Loader>,
+    // errorElement: <ErrorPage></ErrorPage>,
+
     children: [
       {
         path: "/",
         loader: () => axios("http://localhost:3000/data"),
+        hydrateFallbackElement: <Loader></Loader>,
         element: <Home />,
       },
       { path: "/login", element: <Login /> },
@@ -31,32 +39,71 @@ const router = createBrowserRouter([
       {
         path: "/marathons",
         loader: () => axios("http://localhost:3000/allData"),
+        hydrateFallbackElement: <Loader></Loader>,
         element: <Marathons />,
       },
       {
         path: "/marathon/:id",
         loader: ({ params }) =>
           axios(`http://localhost:3000/allData/${params.id}`),
-        element: <MarathonDetails />,
+        hydrateFallbackElement: <Loader></Loader>,
+        element: (
+          <PrivateRoute>
+            <MarathonDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/marathonRegistration/:id",
         loader: ({ params }) =>
           axios(`http://localhost:3000/allData/${params.id}`),
-        element: <MarathonRegistration></MarathonRegistration>,
+        hydrateFallbackElement: <Loader></Loader>,
+        element: (
+          <PrivateRoute>
+            <MarathonRegistration></MarathonRegistration>
+          </PrivateRoute>
+        ),
       },
     ],
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        {" "}
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    hydrateFallbackElement: <Loader></Loader>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
-      { path: "addMarathon", element: <AddMarathon /> },
-      { path: "myMarathons", element: <MyMarathons /> },
-      { path: "myApplies", element: <MyApplies /> },
+      {
+        path: "addMarathon",
+        element: (
+          <PrivateRoute>
+            <AddMarathon />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "myMarathons",
+        element: (
+          <PrivateRoute>
+            <MyMarathons />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "myApplies",
+        element: (
+          <PrivateRoute>
+            <MyApplies />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
-  { path: "*", element: <NotFound /> },
+  { path: "*", element: <ErrorPage></ErrorPage> },
 ]);
 
 export default router;

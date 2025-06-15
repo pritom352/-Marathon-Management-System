@@ -13,25 +13,31 @@ import {
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loader, setLoader] = useState(false);
   const provider = new GoogleAuthProvider();
   const register = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const updateUser = (updateItem) => {
+    setLoader(false);
     return updateProfile(auth.currentUser, updateItem);
   };
   const googleLogin = () => {
+    setLoader(false);
     return signInWithPopup(auth, provider);
   };
   const login = (email, password) => {
+    setLoader(false);
     return signInWithEmailAndPassword(auth, email, password);
   };
   const logout = () => {
+    setLoader(false);
     return signOut(auth);
   };
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoader(true);
     });
     return () => {
       unSubscribe();
@@ -58,6 +64,7 @@ const AuthProvider = ({ children }) => {
     setUser,
     theme,
     setTheme,
+    loader,
   };
   return <AuthContext value={authData}>{children}</AuthContext>;
 };

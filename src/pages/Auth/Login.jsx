@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
@@ -13,6 +13,28 @@ const Login = () => {
     const password = e.target.password.value;
     console.log(email, password);
     login(email, password)
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: error.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
+  const handleGoogleLogin = () => {
+    googleLogin()
       .then(() => {
         Swal.fire({
           position: "top-end",
@@ -105,7 +127,7 @@ const Login = () => {
           </button>
         </form>
         <button
-          // onClick={handleGoogleLogin}
+          onClick={handleGoogleLogin}
           className=" btn   gap-3 rounded-md  bg-black text-white  font-semibold py-2.5 hover:bg-blue-400 hover:border-none hover:font-bold "
         >
           <FaGoogle size={24} /> Login With Google Login
