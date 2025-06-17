@@ -3,6 +3,7 @@ import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { register, updateUser, googleLogin, setUser } =
@@ -24,7 +25,7 @@ const Register = () => {
     register(email, password)
       .then((result) => {
         const users = result.user;
-        console.log(users);
+        // console.log(users);
         updateUser({ displayName: name, photoURL: photo })
           .then(() => {
             setUser({ ...users, displayName: name, photoURL: photo });
@@ -33,7 +34,7 @@ const Register = () => {
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: error.message,
+              title: `${error.message}`,
               showConfirmButton: false,
               timer: 1500,
             });
@@ -50,16 +51,14 @@ const Register = () => {
         });
       })
       .catch((error) => {
-        // console.log(error);
         Swal.fire({
           position: "top-end",
-          icon: "success",
-          title: error.message,
+          icon: "error",
+          title: `${error.message}`,
           showConfirmButton: false,
           timer: 1500,
         });
       });
-    // console.log(name, email, password, photo);
   };
   const handleGoogleLogin = () => {
     googleLogin()
@@ -76,8 +75,8 @@ const Register = () => {
       .catch((error) => {
         Swal.fire({
           position: "top-end",
-          icon: "success",
-          title: error.message,
+          icon: "error",
+          title: `${error.message}`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -85,8 +84,10 @@ const Register = () => {
   };
   return (
     <div>
+      <Helmet title="Marathon || Registration"></Helmet>
+
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto mt-20">
-        <h2 className=" text-3xl font-bold mx-auto  mt-3 text-blue-400  text-shadow-lg ">
+        <h2 className=" text-3xl font-bold mx-auto  mt-3 text-fuchsia-300  text-shadow-lg ">
           Register <span className=" text-black ">Now</span>
         </h2>
         <div className="card-body">

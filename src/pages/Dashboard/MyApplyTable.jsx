@@ -1,15 +1,33 @@
 import axios from "axios";
-import { address, tr } from "motion/react-client";
-import React from "react";
-import Swal from "sweetalert2";
 
-const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
-  const { title, startDate, firstName, lastName, number, email, address, _id } =
-    myApply;
+import React, { useContext } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router";
+
+const MyApplyTable = ({
+  myApply,
+  myApplies,
+  setMyApplies,
+  index,
+  MyApplyUpdate,
+}) => {
+  const navigate = useNavigate();
+  const {
+    title,
+    startDate,
+    firstName,
+    lastName,
+    number,
+    email,
+    address,
+    _id,
+    marathonID,
+  } = myApply;
+  const { user } = useContext(AuthContext);
 
   const handleRegistrationUpdate = (e) => {
     e.preventDefault();
-    // console.log("hello world");
     const target = e.target;
     const title = target.title.value;
     const startDate = target.startDate.value;
@@ -18,10 +36,15 @@ const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
     const lastName = target.lastName.value;
     const address = target.address.value;
     const number = target.contactNumber.value;
-    if (number.length < 11 && number.length > 11) {
-      return alert("Number must be 11 number's");
+    if (number.length != 11) {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: `Number must be 11 number's`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
-    // if(number.length < 11)
     const data = {
       title,
       startDate,
@@ -32,12 +55,29 @@ const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
       number,
     };
     axios
-      .put(`http://localhost:3000/registerdData/${_id}`, data)
+      .put(`https://assignmein11.vercel.app/registerdData/${_id}`, data)
       .then((result) => {
-        console.log(result);
+        if (result.data.modifiedCount) {
+          MyApplyUpdate();
+          document.getElementById(`${myApply?._id}`).close();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Data Update Successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/dashboard/myApplies");
+        }
       })
       .catch((error) => {
-        console.log(error);
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: `${error.message}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
   };
   const handleDelete = (id) => {
@@ -51,22 +91,38 @@ const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/registerdData/${id}`, {
+        fetch(`https://assignmein11.vercel.app/registerdData/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
           .then((result) => {
             if (result.deletedCount) {
+              const newData = myApplies.filter((data) => data._id !== id);
+              setMyApplies(newData);
               Swal.fire({
                 title: "Deleted!",
                 text: "Your task has been deleted.",
                 icon: "success",
               });
-              // console.log(myMarathonList);
-
-              const newData = myApplies.filter((data) => data._id !== id);
-              setMyApplies(newData);
             }
+            axios
+              .patch(
+                `https://assignmein11.vercel.app/removeTotalRegistration/${marathonID}`,
+                {
+                  email: user?.email,
+                }
+              )
+              .then((result) => {})
+              .catch((error) => {});
+          })
+          .catch((error) => {
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: `${error.message}`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
           });
       }
     });
@@ -82,14 +138,13 @@ const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
 
       <td className="text-center">{number}</td>
       <td className=" flex gap-5">
-        {/* Open the modal using document.getElementById('ID').showModal() method */}
         <button
-          className="btn"
-          onClick={() => document.getElementById("my_modal_2").showModal()}
+          onClick={() => document.getElementById(`${_id}`).showModal()}
+          className="flex mx-auto  items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-base-100 border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none"
         >
-          open modal
+          Update
         </button>
-        <dialog id="my_modal_2" className="modal">
+        <dialog id={`${_id}`} className="modal">
           <div className="modal-box w-3/5">
             <h2 className="text-2xl text-center mb-10">
               Update registration details
@@ -104,7 +159,7 @@ const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
                     name="title"
                     defaultValue={title}
                     disabled
-                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white w-full"
                   />
                 </div>
                 {/* start date */}
@@ -115,7 +170,7 @@ const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
                     name="startDate"
                     defaultValue={startDate}
                     disabled
-                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white w-full"
                   />
                 </div>
               </div>
@@ -130,7 +185,7 @@ const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
                     name="email"
                     defaultValue={email}
                     disabled
-                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white w-full"
                   />
                 </div>
                 {/* first name */}
@@ -141,7 +196,7 @@ const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
                     type="text"
                     name="firstName"
                     defaultValue={firstName}
-                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white w-full"
                     placeholder="Enter Your First Name"
                   />
                 </div>
@@ -157,7 +212,7 @@ const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
                     name="lastName"
                     defaultValue={lastName}
                     placeholder="Enter Your Last Name:"
-                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white w-full"
                   />
                 </div>
                 {/* Address */}
@@ -168,7 +223,7 @@ const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
                     type="Address"
                     name="address"
                     defaultValue={address}
-                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white w-full"
                     placeholder="Enter Your Address"
                   />
                 </div>
@@ -182,12 +237,12 @@ const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
                   type="text"
                   defaultValue={number}
                   name="contactNumber"
-                  className="input border-2 text-center mx-auto  rounded-b-none focus:rounded mt-1 focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white "
+                  className="input border-2 text-center mx-auto  rounded-b-none focus:rounded mt-1 focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white "
                   placeholder="Enter Your Number"
                 />
               </div>
-              <button className="flex mx-auto mt-4 md:mt-7 lg:mt-10 items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-white border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none">
-                Add Task
+              <button className="flex mx-auto mt-4 md:mt-7 lg:mt-10 items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-base-100 border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none">
+                Update Task
               </button>
             </form>
           </div>
@@ -198,12 +253,18 @@ const MyApplyTable = ({ myApply, myApplies, setMyApplies, index }) => {
             <button>close</button>
           </form>
         </dialog>
-        <button
+        {/* <button
           onClick={() => handleDelete(_id)}
           className="px-3 py-2 relative rounded group overflow-hidden font-medium bg-purple-50 text-purple-600 inline-block"
         >
           <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-500 group-hover:h-full opacity-90"></span>
           <span className="relative group-hover:text-white">Delete</span>
+        </button> */}
+        <button
+          onClick={() => handleDelete(_id)}
+          className="flex mx-auto  items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-base-100 border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none"
+        >
+          Delete
         </button>
       </td>
     </tr>

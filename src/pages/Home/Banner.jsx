@@ -2,11 +2,10 @@ import React from "react";
 import img1 from "../../assets/download.jpeg";
 import img2 from "../../assets/images.jpeg";
 import img3 from "../../assets/best-marathon-banner.jpg";
-import { div } from "motion/react-client";
 
 const Banner = () => {
   return (
-    <div className=" bg-white">
+    <div className=" bg-base-100">
       <div className="carousel    w-full h-[150px] md:h-[250px] lg:h-[550px] mt-15 rounded-2xl">
         <div id="slide1" className="carousel-item relative w-full">
           <img src={img1} className="w-full" />

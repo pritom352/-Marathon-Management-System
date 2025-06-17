@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark;
+}
+
 /* body {
   background-image: url(../public/pngtree-man-running-with-clothes-on-marathon-race-png-image_4704323.png);
   background-position: center;

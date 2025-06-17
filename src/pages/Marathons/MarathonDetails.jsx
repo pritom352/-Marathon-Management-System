@@ -1,8 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { motion } from "motion/react";
 import { Link, useLoaderData } from "react-router";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { AuthContext } from "../../context/AuthContext";
+import { Helmet } from "react-helmet";
 
 const MarathonDetails = () => {
   const data = useLoaderData();
@@ -20,35 +21,29 @@ const MarathonDetails = () => {
     _id,
   } = data.data;
 
-  console.log(registrationStartDate);
-  console.log(registrationEndDate);
-  console.log(marathonStartDate);
+  // console.log(registrationStartDate);
+  // console.log(registrationEndDate);
+  // console.log(marathonStartDate);
 
   const { user } = useContext(AuthContext);
   const registerd = data?.data.totalRegistrations.includes(user?.email);
+  // console.log(data?.data.totalRegistrations);
 
-  // console.log("registerd", registerd);
-  // console.log(totalRegistrations.length);
+  // console.log("idddddddddddd", registerd);
 
-  const today = new Date().toLocaleDateString("en-GB");
-  // const day = date.getDate();
-  // const month = date.getMonth();
-  // const year = date.getFullYear();
-  // const today = `${day}/${month + 1}/${year}`;
-  console.log(today);
-
-  const todayDateObj = today;
-  const registrationStartDateObj = new Date(registrationStartDate);
-  // console.log(registrationStartDate);
-
-  const registrationEndDateObj = new Date(registrationEndDate);
-  // console.log(registrationEndDateObj);
+  const parseDate = (dateString) => {
+    const [day, month, year] = dateString.split("/");
+    return new Date(`${year}-${month}-${day}`);
+  };
+  const todayDateObj = new Date();
+  const registrationStartDateObj = parseDate(registrationStartDate);
+  const registrationEndDateObj = parseDate(registrationEndDate);
   const [day, month, year] = marathonStartDate.split("/");
   const remainingTime = Math.floor(
     (new Date(`${year}-${month}-${day}`).getTime() - new Date().getTime()) /
       1000
   );
-  console.log("remainingTime", marathonStartDate);
+  // console.log("remainingTime", marathonStartDate);
 
   const getTimeParts = (time) => {
     const days = Math.floor(time / (60 * 60 * 24));
@@ -56,10 +51,15 @@ const MarathonDetails = () => {
     const minutes = Math.floor((time % (60 * 60)) / 60);
     return { days, hours, minutes };
   };
+  // console.log(todayDateObj);
+  // console.log(registrationStartDate);
+  // console.log(registrationEndDate);
 
   return (
     <div>
-      <div className="flex items-center border flex-col lg:flex-row gap-4 md:gap-7 lg:gap-10 rounded-2xl p-3 shadow-2xl bg-slate-50 mt-10">
+      <Helmet title="Marathon || Detail's"></Helmet>
+
+      <div className="flex items-center  flex-col lg:flex-row gap-4 md:gap-7 lg:gap-10 rounded-2xl p-3 shadow-2xl bg-base-100 mt-10">
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           transition={{ duration: 1 }}
@@ -72,7 +72,7 @@ const MarathonDetails = () => {
             alt=""
           />
           {/* Countdown timer overlay */}
-          <div className="absolute top-4 right-4 bg-transparent px-3 py-2 rounded-full shadow-lg">
+          <div className="absolute top-4 right-4 bg-transparent px-3 py-2 rounded-full  shadow-lg">
             <CountdownCircleTimer
               isPlaying
               duration={remainingTime}
@@ -109,10 +109,10 @@ const MarathonDetails = () => {
           initial={{ scale: 0.5, opacity: 0 }}
           transition={{ duration: 1 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="flex-1 border h-[300px] overflow-scroll rounded-2xl shadow-2xl p-5"
+          className="flex-1  h-[300px] overflow-scroll rounded-2xl shadow-2xl bg-base-100 p-5"
         >
-          <div className="md:flex justify-between">
-            <div className="space-y-0.5 md:space-y-2">
+          <div className="md:flex justify-between bg-base-100">
+            <div className="space-y-0.5 bg-base-100 md:space-y-2">
               <h1>
                 <span className="font-bold">Title: </span>
                 {title}
@@ -122,7 +122,7 @@ const MarathonDetails = () => {
                 {createdAt}
               </h1>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 bg-base-100">
               <h1>
                 <span className="font-bold">Location: </span>
                 {location}
@@ -133,7 +133,7 @@ const MarathonDetails = () => {
               </h1>
             </div>
           </div>
-          <p className="my-6 p-3 bg-white shadow-2xs rounded-2xl">
+          <p className="my-6 p-3 bg-base-100 shadow-2xs rounded-2xl">
             {description}
           </p>
           <div className="md:flex justify-between">
@@ -161,23 +161,20 @@ const MarathonDetails = () => {
         </motion.div>
       </div>
 
-      <div className="border flex mt-12">
+      <div className=" flex mt-12">
         {todayDateObj >= registrationStartDateObj &&
         todayDateObj <= registrationEndDateObj &&
-        registerd === false ? (
-          <Link to={`/marathonRegistration/${_id}`}>
+        !registerd ? (
+          <Link className="mx-auto" to={`/marathonRegistration/${_id}`}>
             <button className="btn border mx-auto">Register Now</button>
           </Link>
-        ) : (
-          ""
-        )}
+        ) : null}
+
         {todayDateObj >= registrationStartDateObj &&
         todayDateObj <= registrationEndDateObj &&
-        registerd === true ? (
-          <button className="btn border mx-auto ">Already Registered</button>
-        ) : (
-          ""
-        )}
+        registerd ? (
+          <button className="btn border mx-auto">Already Registered</button>
+        ) : null}
       </div>
     </div>
   );

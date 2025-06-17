@@ -2,20 +2,19 @@ import React from "react";
 import { FaFacebookF, FaGithub } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from "react-icons/fa";
-import { div } from "motion/react-client";
 
 const Footer = () => {
   return (
-    <div className=" bg-white pt-20">
+    <div className="  pt-20">
       <footer className="bg-gray-900 text-white py-10 px-4 ">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 flex-wrap">
           <div className="flex-1 min-w-[250px]">
             <h2 className="text-3xl font-bold italic mb-4">
-              <span className="text-blue-500">Task</span>Linker
+              <span className="text-fuchsia-300">Run</span>ova
             </h2>
             <p className="text-sm text-gray-400">
-              Discover your city's vibe. Find local events, reserve seats, and
-              enjoy life together.
+              Create events, register participants, and manage everything easily
+              and securely on our platform.
             </p>
           </div>
 

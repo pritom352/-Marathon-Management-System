@@ -1,12 +1,50 @@
-# React + Vite
+# 🏃‍♂️ Runova – Marathon Management System 🏃‍♀️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Runova is a full-stack Marathon Management System that allows users to create, manage, explore, and register for marathon events seamlessly. It connects event organizers with participants through an intuitive and responsive interface while ensuring secure user authentication and efficient data handling using Firebase, MongoDB, and JWT.
 
-Currently, two official plugins are available:
+## 🌐 Live Site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 [Runova Live Site]()
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Key Features
+
+- 👥 **Secure Authentication**: Email/password and Google login using Firebase Auth with JWT protection on private routes.
+- 🏁 **Marathon Lifecycle Management**: Add, update, delete marathons; manage registration count dynamically.
+- 📆 **Smart Event Registration**: Register for open events only; real-time countdown to marathon using `react-countdown-circle-timer`.
+- 🧑‍💼 **Dashboard Features**:
+  - My Marathon List (created events)
+  - My Apply List (events user registered in) with search and update/delete support.
+- 🔍 **Advanced Search & Sort**:
+
+  - Server-side search by marathon title and location using MongoDB’s `$regex`
+
+- 🌙 **Dark/Light Theme Toggle**: Seamless switch for accessibility and user preference.
+- 📱 **Fully Responsive UI**: Optimized for mobile, tablet, and desktop screens.
+- 🧠 **Clean UX Enhancements**:
+  - SweetAlert for feedback (success/error)
+  - Spinner on load states
+  - Custom 404 Not Found page
+  - Dynamic page titles using `react-helmet`
+
+---
+
+## 🔐 Tech Stack
+
+### Frontend:
+
+- **React 18**
+- **Tailwind CSS 4.1**
+- **Lottie Animations** via `lottie-react`
+- **Axios**, `react-helmet`, `react-datepicker`, `sweetalert2`
+- **Countdown & CountUp Animations**
+
+### Backend:
+
+- **Node.js & Express.js**
+- **MongoDB (Atlas)**
+- **JWT Authentication**
+- **dotenv** for secure environment variables
+
+---

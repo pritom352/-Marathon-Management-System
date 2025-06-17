@@ -17,6 +17,7 @@ import MyMarathons from "../pages/Dashboard/MyMarathon/MyMarathons";
 import MarathonRegistration from "../pages/marathonRegistration/marathonRegistration";
 import Loader from "../components/Loader";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import DashbordHome from "../pages/Dashboard/DefaultDashboard/DashbordHome";
 
 const router = createBrowserRouter([
   {
@@ -25,12 +26,11 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
 
     hydrateFallbackElement: <Loader></Loader>,
-    // errorElement: <ErrorPage></ErrorPage>,
 
     children: [
       {
         path: "/",
-        loader: () => axios("http://localhost:3000/data"),
+        loader: () => axios("https://assignmein11.vercel.app/data"),
         hydrateFallbackElement: <Loader></Loader>,
         element: <Home />,
       },
@@ -38,14 +38,14 @@ const router = createBrowserRouter([
       { path: "/register", element: <Register /> },
       {
         path: "/marathons",
-        loader: () => axios("http://localhost:3000/allData"),
+        loader: () => axios("https://assignmein11.vercel.app/allMarathonData"),
         hydrateFallbackElement: <Loader></Loader>,
         element: <Marathons />,
       },
       {
         path: "/marathon/:id",
         loader: ({ params }) =>
-          axios(`http://localhost:3000/allData/${params.id}`),
+          axios(`https://assignmein11.vercel.app/allData/${params.id}`),
         hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivateRoute>
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
       {
         path: "/marathonRegistration/:id",
         loader: ({ params }) =>
-          axios(`http://localhost:3000/allData/${params.id}`),
+          axios(`https://assignmein11.vercel.app/allData/${params.id}`),
         hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivateRoute>
@@ -70,13 +70,16 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        {" "}
         <DashboardLayout />
       </PrivateRoute>
     ),
     hydrateFallbackElement: <Loader></Loader>,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
+      {
+        index: true,
+        element: <DashbordHome></DashbordHome>,
+      },
       {
         path: "addMarathon",
         element: (
@@ -87,6 +90,7 @@ const router = createBrowserRouter([
       },
       {
         path: "myMarathons",
+        hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivateRoute>
             <MyMarathons />
@@ -95,6 +99,7 @@ const router = createBrowserRouter([
       },
       {
         path: "myApplies",
+        hydrateFallbackElement: <Loader></Loader>,
         element: (
           <PrivateRoute>
             <MyApplies />

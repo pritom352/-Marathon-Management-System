@@ -1,12 +1,14 @@
 import React from "react";
-import { PulseLoader } from "react-spinners";
+import { PuffLoader, PulseLoader } from "react-spinners";
 
 const Loader = () => {
   return (
-    <div className=" relative h-screen  flex justify-center items-center border">
-      <div className="  top-1/2">
-        <PulseLoader color="indigo-100" />
-      </div>
+    <div className=" relative lg:h-screen  ">
+      <PuffLoader
+        className=" absolute top-20 lg:top-1/2 mx-auto"
+        size={160}
+        color="red"
+      />
     </div>
   );
 };

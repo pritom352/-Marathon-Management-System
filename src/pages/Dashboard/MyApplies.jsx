@@ -2,31 +2,41 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import MyApplyTable from "./MyApplyTable";
+import { Helmet } from "react-helmet";
 
 const MyApplies = () => {
   const { user } = useContext(AuthContext);
   const [myApplies, setMyApplies] = useState(null);
   const [search, setSearch] = useState("");
-  console.log(search);
+  // console.log(search);
+  const MyApplyUpdate = () => {
+    axios
+      .get(
+        `https://assignmein11.vercel.app/registerdData?email=${user?.email}&search=${search}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.accessToken}`,
+          },
+        }
+      )
+      .then((result) => {
+        setMyApplies(result?.data);
+      })
+      .catch((error) => {
+        // console.log(error);
+      });
+  };
   useEffect(() => {
     if (user) {
-      axios
-        .get(
-          `http://localhost:3000/registerdData?email=${user?.email}&search=${search}`
-        )
-        .then((result) => {
-          setMyApplies(result?.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      MyApplyUpdate();
     }
   }, [user, search]);
-  console.log(myApplies);
+  // console.log(myApplies);
   return (
     <div>
-      <h1 className=" text-3xl md:text-4xl lg:text-5xl text-blue-500 italic font-bold mt-10 mb-2 text-center">
-        My <span className=" text-black">Applies</span>
+      <Helmet title="Marathon || Applyed"></Helmet>
+      <h1 className=" text-3xl md:text-4xl lg:text-5xl  italic font-bold mt-10 mb-2 text-center">
+        <span className="text-fuchsia-300">My</span> Applies
       </h1>
       <div className="divider mb-7"></div>
       <div className=" flex justify-center mb-13 ">
@@ -58,6 +68,7 @@ const MyApplies = () => {
                 setMyApplies={setMyApplies}
                 index={index}
                 key={myApply._id}
+                MyApplyUpdate={MyApplyUpdate}
               ></MyApplyTable>
             ))}
           </tbody>

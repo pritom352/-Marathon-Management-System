@@ -7,7 +7,6 @@ import "./NavBar.css";
 
 const Navbar = () => {
   const { logout, user, theme, setTheme } = useContext(AuthContext);
-  // console.log(user?.photoURL);
 
   const handleLogout = () => {
     logout()
@@ -24,14 +23,14 @@ const Navbar = () => {
         Swal.fire({
           position: "top-end",
           icon: "error",
-          title: error.message,
+          title: `${error.message}`,
           showConfirmButton: false,
           timer: 1500,
         });
       });
   };
   const links = (
-    <div className=" flex gap-4 bg-white">
+    <div className=" flex  gap-4 bg-base-100">
       <NavLink to={"/"}>
         <p className="group cursor-pointer relative">
           Home
@@ -92,7 +91,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <img className=" border w-[50px] rounded-2xl" src={logo} alt="" />
+        <img className="  w-[50px] rounded-2xl" src={logo} alt="" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -126,7 +125,7 @@ const Navbar = () => {
         {user ? (
           <>
             <img
-              className=" w-[50px] rounded-full mr-2"
+              className=" w-[50px] h-[50px]   rounded-full mr-2"
               src={user?.photoURL}
               alt=""
             />

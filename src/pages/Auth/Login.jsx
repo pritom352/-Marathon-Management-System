@@ -3,6 +3,7 @@ import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { login, googleLogin } = useContext(AuthContext);
@@ -11,7 +12,7 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+    // console.log(email, password);
     login(email, password)
       .then(() => {
         Swal.fire({
@@ -26,8 +27,8 @@ const Login = () => {
       .catch((error) => {
         Swal.fire({
           position: "top-end",
-          icon: "success",
-          title: error.message,
+          icon: "error",
+          title: `${error.message}`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -48,8 +49,8 @@ const Login = () => {
       .catch((error) => {
         Swal.fire({
           position: "top-end",
-          icon: "success",
-          title: error.message,
+          icon: "error",
+          title: `${error.message}`,
           showConfirmButton: false,
           timer: 1500,
         });
@@ -57,7 +58,9 @@ const Login = () => {
   };
   return (
     <div className="card mx-auto bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mt-30">
-      <h2 className=" text-3xl font-bold mx-auto  mt-3 text-blue-400  text-shadow-lg ">
+      <Helmet title="Marathon || Login"></Helmet>
+
+      <h2 className=" text-3xl font-bold mx-auto  mt-3 text-fuchsia-300  text-shadow-lg ">
         Login <span className=" text-black ">Now</span>
       </h2>
       <div className="card-body">

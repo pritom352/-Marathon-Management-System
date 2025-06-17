@@ -5,10 +5,10 @@ import { useLoaderData } from "react-router";
 import UpcomingMarathons from "../UpcomingEvents/UpcomingMarathons";
 import Reviews from "./Reviews";
 import CountUpSection from "./CountUpSection";
-// import UpcomingMarathons from "../UpcomingEvents/UpcomingMarathons";
 
 const Home = () => {
   const upcomingApi = fetch("upcoming.json").then((res) => res.json());
+  // console.log("upcoming", upcomingApi);
 
   const data = useLoaderData();
   const [marathonsData, setMarathonsData] = useState(data?.data || []);
@@ -21,7 +21,7 @@ const Home = () => {
         setTextimonials(data);
       });
   }, []);
-  console.log(textimonials);
+  // console.log(textimonials);
   return (
     <div>
       <Banner></Banner>

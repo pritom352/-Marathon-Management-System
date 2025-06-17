@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router";
+import { Link, Navigate } from "react-router";
 import Swal from "sweetalert2";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -11,21 +11,10 @@ const MyMarathonTable = ({
   index,
   setMyMarathonList,
   myMarathonList,
+  getMyMarathons,
 }) => {
-  const {
-    title,
-
-    location,
-    // distance,
-    description,
-    image,
-    createdAt,
-    totalRegistrations,
-    // email,
-  } = myMarathon;
-  console.log(myMarathon);
-  const total = totalRegistrations;
-  // console.log(registrationStartDate);
+  const total = myMarathon?.totalRegistrations;
+  // console.log(myMarathon);
   const { user } = useContext(AuthContext);
   const [startRegistration, setStartRegistration] = useState(
     new Date(myMarathon?.registrationStartDate?.split("/").reverse().join("/"))
@@ -37,13 +26,6 @@ const MyMarathonTable = ({
   const [updateMarathonStartDate, setUpdateMarathonStartDate] = useState(
     new Date(myMarathon?.marathonStartDate?.split("/").reverse().join("/"))
   );
-  // const date = new Date();
-  // const day = date.getDate();
-  // const month = date.getMonth();
-  // const year = date.getFullYear();
-  // const today = `${day}/${month + 1}/${year}`;
-  // console.log(day, month, year);
-  // const [updateCreatedAt, setupdateCreatedAt] = useState(today);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -56,7 +38,7 @@ const MyMarathonTable = ({
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/allData/${id}`, {
+        fetch(`https://assignmein11.vercel.app/allData/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -67,17 +49,26 @@ const MyMarathonTable = ({
                 text: "Your task has been deleted.",
                 icon: "success",
               });
-              console.log(myMarathonList);
 
               const newData = myMarathonList.filter((data) => data._id !== id);
               setMyMarathonList(newData);
             }
+          })
+          .catch((error) => {
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: `${error.message}`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
           });
       }
     });
   };
   const handleUpdate = (e) => {
     e.preventDefault();
+
     const target = e.target;
     const title = target.title.value;
     const registrationStartDate = startRegistration.toLocaleDateString("en-GB");
@@ -109,9 +100,13 @@ const MyMarathonTable = ({
     };
 
     axios
-      .put(`http://localhost:3000/allData/${myMarathon._id}`, marathon)
+      .put(
+        `https://assignmein11.vercel.app/allData/${myMarathon._id}`,
+        marathon
+      )
       .then((result) => {
         if (result?.data?.acknowledged) {
+          getMyMarathons();
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -119,8 +114,11 @@ const MyMarathonTable = ({
             showConfirmButton: false,
             timer: 1500,
           });
+
+          e.target.reset();
+          document.getElementById(`${myMarathon?._id}`).close();
         }
-        console.log(result);
+        // console.log(result);
       })
       .catch((error) => {
         Swal.fire({
@@ -130,25 +128,27 @@ const MyMarathonTable = ({
           showConfirmButton: false,
           timer: 1500,
         });
-        console.log(error);
+        // console.log(error);
       });
   };
   return (
     <tr>
       <td className="text-center">{index + 1}</td>
-      <td className="text-center">{title}</td>
+      <td className="text-center">{myMarathon?.title}</td>
       <td className="text-center">{myMarathon?.registrationStartDate}</td>
       <td className="text-center">{myMarathon?.registrationEndDate}</td>
-      <td className="text-center">{totalRegistrations}</td>
+      <td className="text-center">{myMarathon?.totalRegistrations.length}</td>
       <td className="text-center">
         <div className="flex gap-5">
           <button
-            className="btn"
-            onClick={() => document.getElementById("my_modal_2").showModal()}
+            onClick={() =>
+              document.getElementById(`${myMarathon?._id}`).showModal()
+            }
+            className="flex mx-auto   items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-base-100 border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none"
           >
-            open modal
+            Update
           </button>
-          <dialog id="my_modal_2" className="modal  w-full">
+          <dialog id={`${myMarathon?._id}`} className="modal  w-full">
             <div className="modal-box w-4/5">
               <h3 className="font-bold text-lg">Hello!</h3>
               <form
@@ -164,7 +164,7 @@ const MyMarathonTable = ({
                       defaultValue={myMarathon?.title}
                       required
                       name="title"
-                      className="input cursor-not-allowed border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      className="input  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
                       placeholder="Enter Title Name"
                     />
                   </div>
@@ -176,7 +176,7 @@ const MyMarathonTable = ({
                       defaultValue={location}
                       required
                       name="location"
-                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
                       placeholder="Enter Location"
                     />
                   </div>
@@ -187,9 +187,9 @@ const MyMarathonTable = ({
 
                   <textarea
                     name="description"
-                    defaultValue={description}
+                    defaultValue={myMarathon?.description}
                     required
-                    className="textarea  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="textarea  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
                     placeholder="Description"
                   ></textarea>
                 </div>
@@ -199,9 +199,9 @@ const MyMarathonTable = ({
                     <label className="label font-bold">Running Distance</label>
                     <select
                       name="distance"
-                      defaultValue={description}
+                      defaultValue={myMarathon?.distance}
                       required
-                      className="select validator border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      className="select validator border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
                     >
                       <option value="" disabled></option>
                       <option value="25 KM">25 KM</option>
@@ -216,10 +216,10 @@ const MyMarathonTable = ({
 
                     <input
                       type="url"
-                      defaultValue={image}
+                      defaultValue={myMarathon?.image}
                       required
                       name="image"
-                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
                       placeholder="Enter image URL"
                     />
                   </div>
@@ -267,10 +267,9 @@ const MyMarathonTable = ({
                     <label className="label font-bold">Created At</label>
                     <DatePicker
                       name="createdAt"
-                      className="border-0 border-b-1 rounded-b-none  text-black font-semibold  w-full"
-                      selected={createdAt}
+                      className="border-0 border-b-1 rounded-b-none     font-semibold  w-full"
+                      selected={myMarathon?.createdAt}
                       disabled
-                      // onChange={(date) => setupdateCreatedAt(date)}
                     />
                   </div>
                 </div>
@@ -285,7 +284,7 @@ const MyMarathonTable = ({
                       name="email"
                       defaultValue={user?.email || ""}
                       disabled
-                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
                       placeholder="Your Email"
                     />
                   </div>
@@ -297,13 +296,13 @@ const MyMarathonTable = ({
                       type="text"
                       disabled
                       defaultValue={user?.displayName || ""}
-                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
                       placeholder="Your Name"
                     />
                   </div>
                 </div>
-                <button className="flex mx-auto mt-4 md:mt-7 lg:mt-10 items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-white border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none">
-                  Add Task
+                <button className="flex mx-auto  md:mt-7 lg:mt-10 items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-base-100 border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none">
+                  Update Task
                 </button>
               </form>
             </div>
@@ -314,10 +313,9 @@ const MyMarathonTable = ({
 
           <button
             onClick={() => handleDelete(myMarathon._id)}
-            className="px-3 py-2 relative rounded group overflow-hidden font-medium bg-purple-50 text-purple-600 inline-block"
+            className="flex mx-auto  items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-base-100 border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none"
           >
-            <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-500 group-hover:h-full opacity-90"></span>
-            <span className="relative group-hover:text-white">Delete</span>
+            Delete
           </button>
         </div>
       </td>
