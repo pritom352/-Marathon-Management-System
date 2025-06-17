@@ -23,19 +23,13 @@ const Footer = () => {
               <h3 className="text-lg font-semibold mb-3">Useful Links</h3>
               <ul className="space-y-2 text-gray-300">
                 <li>
-                  <a href="/terms" className="hover:text-blue-400">
-                    Terms & Conditions
-                  </a>
+                  <a className="hover:text-blue-400">Terms & Conditions</a>
                 </li>
                 <li>
-                  <a href="/privacy" className="hover:text-blue-400">
-                    Privacy Policy
-                  </a>
+                  <a className="hover:text-blue-400">Privacy Policy</a>
                 </li>
                 <li>
-                  <a href="/about" className="hover:text-blue-400">
-                    About Us
-                  </a>
+                  <a className="hover:text-blue-400">About Us</a>
                 </li>
               </ul>
             </div>
