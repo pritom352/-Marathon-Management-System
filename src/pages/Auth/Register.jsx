@@ -188,7 +188,7 @@ const Register = () => {
           </p>
         </div>
       </div>
-      <div className="border hidden md:block">
+      <div className=" hidden md:block">
         {" "}
         <Lottie
           animationData={reg}

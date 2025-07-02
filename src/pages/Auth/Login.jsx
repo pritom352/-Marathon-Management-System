@@ -149,7 +149,7 @@ const Login = () => {
           </p>
         </div>
       </div>
-      <div className=" hidden md:block border">
+      <div className=" hidden md:block ">
         <Lottie
           animationData={loginAnimetion}
           loop={true}
