@@ -6,9 +6,7 @@ import Marathons from "../pages/Marathons/Marathons";
 import MarathonDetails from "../pages/Marathons/MarathonDetails";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AddMarathon from "../pages/Dashboard/AddMarathon";
-// import MyMarathons from "../pages/Dashboard/MyMarathons";
-// import MyApplies from "../pages/Dashboard/MyApplies";
-import NotFound from "../pages/NotFound/NotFound";
+
 import MainLayout from "../layouts/MainLayout";
 import PrivateRoute from "./PrivateRoute";
 import axios from "axios";
@@ -18,6 +16,8 @@ import MarathonRegistration from "../pages/marathonRegistration/marathonRegistra
 import Loader from "../components/Loader";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import DashbordHome from "../pages/Dashboard/DefaultDashboard/DashbordHome";
+import AboutUs from "../pages/Home/AboutUs/AboutUs";
+import Contact from "../pages/Contact/Contact";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +54,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/aboutUs",
+        Component: AboutUs,
+      },
+      {
+        path: "/contact",
+        Component: Contact,
+      },
+      {
         path: "/marathonRegistration/:id",
         loader: ({ params }) =>
           axios(`https://assignmein11.vercel.app/allData/${params.id}`),
@@ -66,6 +74,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+
   {
     path: "/dashboard",
     element: (

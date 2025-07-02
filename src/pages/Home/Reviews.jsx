@@ -5,9 +5,9 @@ import ReviewCard from "./ReviewCard";
 
 const Reviews = ({ textimonials }) => {
   return (
-    <div className="mt-25">
-      <h1 className=" mb-8 text-2xl md:text-3xl lg:text-4xl italic font-bold text-center text-shadow-2xs">
-        <span className=" text-fuchsia-300">User</span> Reviews
+    <div className="mt-20">
+      <h1 className=" mb-15 text-2xl md:text-3xl lg:text-4xl italic font-bold text-center text-shadow-2xs">
+        <span className=" text-primary">User</span> Reviews
       </h1>
       <div className="flex gap-5 items-center ">
         <Marquee>

@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className=" bg-accent">
       <Helmet title="Marathon || Home"></Helmet>
       <Navbar></Navbar>
       <div className=" max-w-10/11 md:max-w-9/11 lg:max-w-8/10 mx-auto">

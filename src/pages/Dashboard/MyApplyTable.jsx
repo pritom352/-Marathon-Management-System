@@ -140,17 +140,17 @@ const MyApplyTable = ({
       <td className=" flex gap-5">
         <button
           onClick={() => document.getElementById(`${_id}`).showModal()}
-          className="flex mx-auto  items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-base-100 border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none"
+          className="flex mx-auto  items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-white whitespace-no-wrap bg-primary border-2 border-transparent rounded-full shadow-sm hover:bg-accent hover:text-black hover:border-white focus:outline-none"
         >
           Update
         </button>
         <dialog id={`${_id}`} className="modal">
-          <div className="modal-box w-3/5">
+          <div className="modal-box w-3/5 bg-secondary">
             <h2 className="text-2xl text-center mb-10">
               Update registration details
             </h2>
             <form onSubmit={handleRegistrationUpdate}>
-              <div className=" flex flex-col md:flex-row lg:flex-row justify-between gap-5 md:gap-8 lg:gap-16">
+              <div className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full">
                 <div className="  w-full">
                   {/* Title */}
                   <label className="label font-bold">Task Title</label>
@@ -159,7 +159,7 @@ const MyApplyTable = ({
                     name="title"
                     defaultValue={title}
                     disabled
-                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
                   />
                 </div>
                 {/* start date */}
@@ -170,11 +170,10 @@ const MyApplyTable = ({
                     name="startDate"
                     defaultValue={startDate}
                     disabled
-                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
                   />
                 </div>
               </div>
-              {/* -------------------------------------------- */}
               <div className=" flex flex-col md:flex-row gap-5 md:gap-8 lg:gap-16 justify-between">
                 {/* email */}
                 <div className=" w-full">
@@ -185,7 +184,7 @@ const MyApplyTable = ({
                     name="email"
                     defaultValue={email}
                     disabled
-                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
                   />
                 </div>
                 {/* first name */}
@@ -196,12 +195,11 @@ const MyApplyTable = ({
                     type="text"
                     name="firstName"
                     defaultValue={firstName}
-                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="input border-0 bg-secondary border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-primary focus:text-white w-full"
                     placeholder="Enter Your First Name"
                   />
                 </div>
               </div>
-              {/* ---------------------------------------------------------------------------------------------------------- */}
               <div className=" flex flex-col md:flex-row gap-5 md:gap-8 lg:gap-16 justify-between">
                 {/* last name */}
                 <div className=" w-full">
@@ -212,7 +210,7 @@ const MyApplyTable = ({
                     name="lastName"
                     defaultValue={lastName}
                     placeholder="Enter Your Last Name:"
-                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="input border-0 bg-secondary border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-primary focus:text-white w-full"
                   />
                 </div>
                 {/* Address */}
@@ -223,7 +221,7 @@ const MyApplyTable = ({
                     type="Address"
                     name="address"
                     defaultValue={address}
-                    className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="input border-0 bg-secondary border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500  font-semibold focus:bg-primary focus:text-white w-full"
                     placeholder="Enter Your Address"
                   />
                 </div>
@@ -237,11 +235,11 @@ const MyApplyTable = ({
                   type="text"
                   defaultValue={number}
                   name="contactNumber"
-                  className="input border-2 text-center mx-auto  rounded-b-none focus:rounded mt-1 focus:border-2 focus:border-blue-500  font-semibold focus:bg-blue-300 focus:text-white "
+                  className="input border-2 bg-secondary text-center mx-auto  rounded-b-none focus:rounded mt-1 focus:border-2 focus:border-blue-500  font-semibold focus:bg-primary focus:text-white "
                   placeholder="Enter Your Number"
                 />
               </div>
-              <button className="flex mx-auto mt-4 md:mt-7 lg:mt-10 items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-base-100 border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none">
+              <button className="flex mx-auto mt-4  items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-white whitespace-no-wrap bg-primary border-2 border-transparent rounded-full shadow-sm hover:bg-accent hover:text-black hover:border-white focus:outline-none">
                 Update Task
               </button>
             </form>
@@ -253,16 +251,10 @@ const MyApplyTable = ({
             <button>close</button>
           </form>
         </dialog>
-        {/* <button
-          onClick={() => handleDelete(_id)}
-          className="px-3 py-2 relative rounded group overflow-hidden font-medium bg-purple-50 text-purple-600 inline-block"
-        >
-          <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-500 group-hover:h-full opacity-90"></span>
-          <span className="relative group-hover:text-white">Delete</span>
-        </button> */}
+
         <button
           onClick={() => handleDelete(_id)}
-          className="flex mx-auto  items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-base-100 border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none"
+          className="flex mx-auto  items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-white whitespace-no-wrap bg-primary border-2 border-transparent rounded-full shadow-sm hover:bg-accent hover:text-black hover:border-white focus:outline-none"
         >
           Delete
         </button>

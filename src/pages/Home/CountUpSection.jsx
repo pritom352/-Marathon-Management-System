@@ -30,8 +30,8 @@ const CountUpSection = () => {
       }
       className="my-20 px-4 sm:px-6 lg:px-20"
     >
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10">
-        <span className="text-fuchsia-300">Our Marathon</span> Achievements
+      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-15">
+        <span className="text-primary">Our Marathon</span> Achievements
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <motion.div
@@ -48,21 +48,19 @@ const CountUpSection = () => {
                 }
               : {}
           }
-          className="bg-indigo-100 rounded-2xl p-8 space-y-4 text-center"
+          className="bg-secondary rounded-2xl p-8 space-y-4 text-center"
         >
-          <FaRunning className="text-5xl text-indigo-600 mx-auto" />
+          <FaRunning className="text-5xl text-primary mx-auto" />
           <div className="flex justify-center gap-1 items-end">
             <CountUp
-              className="text-4xl font-extrabold text-indigo-700"
+              className="text-4xl font-extrabold "
               enableScrollSpy
               duration={4}
               end={150}
             />
-            <span className="text-3xl font-bold text-indigo-700">+</span>
+            <span className="text-3xl font-bold ">+</span>
           </div>
-          <p className="text-lg font-medium text-gray-700">
-            Total Marathons Hosted
-          </p>
+          <p className="text-lg font-medium ">Total Marathons Hosted</p>
         </motion.div>
 
         <motion.div
@@ -79,21 +77,19 @@ const CountUpSection = () => {
                 }
               : {}
           }
-          className="bg-indigo-100 rounded-2xl p-8 space-y-4 text-center"
+          className="bg-secondary rounded-2xl p-8 space-y-4 text-center"
         >
-          <FaUsers className="text-5xl text-indigo-600 mx-auto" />
+          <FaUsers className="text-5xl text-primary mx-auto" />
           <div className="flex justify-center gap-1 items-end">
             <CountUp
-              className="text-4xl font-extrabold text-indigo-700"
+              className="text-4xl font-extrabold "
               enableScrollSpy
               duration={4}
               end={12000}
             />
-            <span className="text-3xl font-bold text-indigo-700">+</span>
+            <span className="text-3xl font-bold ">+</span>
           </div>
-          <p className="text-lg font-medium text-gray-700">
-            Total Participants
-          </p>
+          <p className="text-lg font-medium ">Total Participants</p>
         </motion.div>
 
         <motion.div
@@ -110,21 +106,19 @@ const CountUpSection = () => {
                 }
               : {}
           }
-          className="bg-indigo-100 rounded-2xl p-8 space-y-4 text-center"
+          className="bg-secondary rounded-2xl p-8 space-y-4 text-center"
         >
-          <FaMedal className="text-5xl text-indigo-600 mx-auto" />
+          <FaMedal className="text-5xl text-primary mx-auto" />
           <div className="flex justify-center gap-1 items-end">
             <CountUp
-              className="text-4xl font-extrabold text-indigo-700"
+              className="text-4xl font-extrabold "
               enableScrollSpy
               duration={4}
               end={9800}
             />
-            <span className="text-3xl font-bold text-indigo-700">+</span>
+            <span className="text-3xl font-bold ">+</span>
           </div>
-          <p className="text-lg font-medium text-gray-700">
-            Total Successful Runners
-          </p>
+          <p className="text-lg font-medium ">Total Successful Runners</p>
         </motion.div>
 
         <motion.div
@@ -141,19 +135,19 @@ const CountUpSection = () => {
                 }
               : {}
           }
-          className="bg-indigo-100 rounded-2xl p-8 space-y-4 text-center"
+          className="bg-secondary rounded-2xl p-8 space-y-4 text-center"
         >
-          <FaCity className="text-5xl text-indigo-600 mx-auto" />
+          <FaCity className="text-5xl text-primary mx-auto" />
           <div className="flex justify-center gap-1 items-end">
             <CountUp
-              className="text-4xl font-extrabold text-indigo-700"
+              className="text-4xl font-extrabold "
               enableScrollSpy
               duration={4}
               end={40}
             />
-            <span className="text-3xl font-bold text-indigo-700">+</span>
+            <span className="text-3xl font-bold ">+</span>
           </div>
-          <p className="text-lg font-medium text-gray-700">Cities Covered</p>
+          <p className="text-lg font-medium ">Cities Covered</p>
         </motion.div>
 
         <motion.div
@@ -170,19 +164,19 @@ const CountUpSection = () => {
                 }
               : {}
           }
-          className="bg-indigo-100 rounded-2xl p-8 space-y-4 text-center"
+          className="bg-secondary rounded-2xl p-8 space-y-4 text-center"
         >
-          <FaHourglassStart className="text-5xl text-indigo-600 mx-auto" />
+          <FaHourglassStart className="text-5xl text-primary mx-auto" />
           <div className="flex justify-center gap-1 items-end">
             <CountUp
-              className="text-4xl font-extrabold text-indigo-700"
+              className="text-4xl font-extrabold "
               enableScrollSpy
               duration={4}
               end={5}
             />
-            <span className="text-3xl font-bold text-indigo-700">+</span>
+            <span className="text-3xl font-bold ">+</span>
           </div>
-          <p className="text-lg font-medium text-gray-700">Years of Journey</p>
+          <p className="text-lg font-medium ">Years of Journey</p>
         </motion.div>
 
         <motion.div
@@ -199,19 +193,19 @@ const CountUpSection = () => {
                 }
               : {}
           }
-          className="bg-indigo-100 rounded-2xl p-8 space-y-4 text-center"
+          className="bg-secondary rounded-2xl p-8 space-y-4 text-center"
         >
-          <FaStar className="text-5xl text-indigo-600 mx-auto" />
+          <FaStar className="text-5xl text-primary mx-auto" />
           <div className="flex justify-center gap-1 items-end">
             <CountUp
-              className="text-4xl font-extrabold text-indigo-700"
+              className="text-4xl font-extrabold "
               enableScrollSpy
               duration={4}
               end={650}
             />
-            <span className="text-3xl font-bold text-indigo-700">+</span>
+            <span className="text-3xl font-bold ">+</span>
           </div>
-          <p className="text-lg font-medium text-gray-700">User Reviews</p>
+          <p className="text-lg font-medium ">User Reviews</p>
         </motion.div>
       </div>
     </div>

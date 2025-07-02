@@ -11,7 +11,6 @@ const AddMarathon = () => {
   const [startRegistration, setStartRegistration] = useState(null);
   const [endRegistration, setEndRegistration] = useState(null);
   const [startDate, setStartDate] = useState(null);
-  // console.log(startDate);
 
   const date = new Date();
 
@@ -22,7 +21,6 @@ const AddMarathon = () => {
     const registrationStartDate = startRegistration.toLocaleDateString("en-GB");
     const registrationEndDate = endRegistration.toLocaleDateString("en-GB");
     const marathonStartDate = startDate.toLocaleDateString("en-GB");
-    // console.log(marathonStartDate);
 
     const location = target.location.value;
     const distance = target.distance.value;
@@ -31,7 +29,6 @@ const AddMarathon = () => {
     const email = target.email.value;
 
     const createdAt = target.createdAt.value;
-    // console.log(registrationStartDate);
 
     const totalRegistrations = [];
 
@@ -74,14 +71,13 @@ const AddMarathon = () => {
           timer: 1500,
         });
       });
-    // console.log(marathon);
   };
 
   return (
-    <div className=" md:px-10 py-15  lg:px-30 lg:my-20 bg-base-100 ">
+    <div className=" md:px-10  py-10  lg:px-30  bg-secondary ">
       <Helmet title="Add || Marathon"></Helmet>
 
-      <h1 className=" text-2xl md:text-3xl lg:text-5xl mb-8 font-bold italic text-center text-fuchsia-300">
+      <h1 className=" text-2xl md:text-3xl lg:text-5xl mb-15 font-bold italic text-center text-primary">
         Add <span className=" text-base-content">Task</span>
       </h1>
       <form
@@ -96,7 +92,7 @@ const AddMarathon = () => {
               type="text"
               required
               name="title"
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="input border-0 border-b-2 bg-secondary rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
               placeholder="Enter Title Name"
             />
           </div>
@@ -107,7 +103,7 @@ const AddMarathon = () => {
               type="text"
               required
               name="location"
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="input border-0 bg-secondary border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
               placeholder="Enter Location"
             />
           </div>
@@ -119,7 +115,7 @@ const AddMarathon = () => {
           <textarea
             name="description"
             required
-            className="textarea  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-blue-300 focus:text-white w-full"
+            className="textarea  border-0 border-b-2 bg-secondary rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
             placeholder="Description"
           ></textarea>
         </div>
@@ -131,7 +127,7 @@ const AddMarathon = () => {
               name="distance"
               required
               defaultValue=""
-              className="select  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="select  bg-secondary border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
             >
               <option value="" disabled></option>
               <option value="25 KM">25 KM</option>
@@ -147,19 +143,18 @@ const AddMarathon = () => {
               type="url"
               required
               name="image"
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="input border-0 border-b-2 bg-secondary rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
               placeholder="Enter image URL"
             />
           </div>
         </div>
-        {/* ------------------------------------------- */}
 
         <div className=" flex flex-col md:flex-row justify-between gap-5 md:gap-8 lg:gap-16 ">
           {/* Start Registration */}
           <div className=" w-full  flex flex-col gap-3 ">
             <label className="label font-bold"> Start Registration</label>
             <DatePicker
-              className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
               required
               selected={startRegistration}
               onChange={(date) => setStartRegistration(date)}
@@ -170,20 +165,18 @@ const AddMarathon = () => {
             <label className="label font-bold">End Registration</label>
             <DatePicker
               required
-              className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
               selected={endRegistration}
               onChange={(date) => setEndRegistration(date)}
             />
           </div>
         </div>
-        {/* -------------------------------------------- */}
-        {/* ------------------------------------------- */}
         <div className=" flex flex-col md:flex-row justify-between gap-5 md:gap-8 lg:gap-16 ">
           {/* Marathon Start Date */}
           <div className=" w-full  flex flex-col gap-3 ">
             <label className="label font-bold">Marathon Start Date</label>
             <DatePicker
-              className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
               required
               selected={startDate}
               onChange={(date) => setStartDate(date)}
@@ -200,7 +193,6 @@ const AddMarathon = () => {
             />
           </div>
         </div>
-        {/* -------------------------------------------- */}
         <div className=" flex flex-col md:flex-row gap-5 md:gap-8 lg:gap-16 justify-between">
           {/* email */}
           <div className=" w-full">
@@ -211,7 +203,7 @@ const AddMarathon = () => {
               name="email"
               defaultValue={user?.email || ""}
               disabled
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
               placeholder="Your Email"
             />
           </div>
@@ -223,12 +215,12 @@ const AddMarathon = () => {
               type="text"
               disabled
               defaultValue={user?.displayName || ""}
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
               placeholder="Your Name"
             />
           </div>
         </div>
-        <button className="flex mx-auto mt-4 md:mt-7 lg:mt-10 items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-base-100 border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none">
+        <button className="flex mx-auto mt-4 md:mt-7 lg:mt-10 items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-primary border-2 border-transparent rounded-full shadow-sm hover:bg-accent hover:text-black hover:border-white focus:outline-none">
           Add Task
         </button>
       </form>

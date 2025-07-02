@@ -3,12 +3,14 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import MyApplyTable from "./MyApplyTable";
 import { Helmet } from "react-helmet";
+import Loader from "../../components/Loader";
 
 const MyApplies = () => {
   const { user } = useContext(AuthContext);
   const [myApplies, setMyApplies] = useState(null);
   const [search, setSearch] = useState("");
-  // console.log(search);
+
+  console.log(search);
   const MyApplyUpdate = () => {
     axios
       .get(
@@ -22,33 +24,41 @@ const MyApplies = () => {
       .then((result) => {
         setMyApplies(result?.data);
       })
-      .catch((error) => {
-        // console.log(error);
-      });
+      .catch((error) => {});
+  };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const data = e.target.search.value;
+    setSearch(data);
   };
   useEffect(() => {
     if (user) {
       MyApplyUpdate();
     }
   }, [user, search]);
-  // console.log(myApplies);
+
   return (
     <div>
       <Helmet title="Marathon || Applyed"></Helmet>
-      <h1 className=" text-3xl md:text-4xl lg:text-5xl  italic font-bold mt-10 mb-2 text-center">
-        <span className="text-fuchsia-300">My</span> Applies
+      <h1 className=" text-3xl md:text-4xl lg:text-5xl  italic font-bold mt-20 mb-2 text-center">
+        <span className="text-primary">My</span> Applies
       </h1>
-      <div className="divider mb-7"></div>
-      <div className=" flex justify-center mb-13 ">
+      <div className="divider mb-15"></div>
+      <form
+        onSubmit={handleSearch}
+        className=" flex justify-center  gap-5 mb-10 "
+      >
         <input
           type="text"
           name="search"
           placeholder="Search"
-          className="input  rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white "
-          onChange={(e) => setSearch(e.target.value)}
+          className="input bg-secondary  rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-primary focus:text-white  "
         />
-      </div>
-      <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 mx-10 shadow-2xl">
+        <button className="relative  py-2 px-3 rounded-2xl full bg-primary text-white hover:text-black hover:bg-accent transition-all font-semibold">
+          Search
+        </button>
+      </form>
+      <div className="overflow-x-auto rounded-box border border-base-content/5 bg-secondary mx-10 shadow-2xl">
         <table className="table">
           <thead>
             <tr>

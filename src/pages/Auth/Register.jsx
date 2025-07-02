@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import Lottie from "lottie-react";
+import reg from "../../assets/reg.json";
 
 const Register = () => {
   const { register, updateUser, googleLogin, setUser } =
@@ -83,11 +85,11 @@ const Register = () => {
       });
   };
   return (
-    <div>
+    <div className=" flex border justify-around items-center">
       <Helmet title="Marathon || Registration"></Helmet>
 
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto mt-20">
-        <h2 className=" text-3xl font-bold mx-auto  mt-3 text-fuchsia-300  text-shadow-lg ">
+      <div className="card bg-secondary w-full max-w-sm shrink-0 shadow-2xl  mt-20">
+        <h2 className=" text-3xl font-bold mx-auto  mt-3 text-primary  text-shadow-lg ">
           Register <span className=" text-black ">Now</span>
         </h2>
         <div className="card-body">
@@ -98,7 +100,7 @@ const Register = () => {
               type="text"
               required
               name="name"
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="input border-0 border-b-2 bg-secondary rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-primary focus:text-white w-full"
               placeholder="Name"
             />
             {/* Email */}
@@ -107,7 +109,7 @@ const Register = () => {
               type="email"
               required
               name="email"
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="input border-0 border-b-2 bg-secondary rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-primary focus:text-white w-full"
               placeholder="Email"
             />
             {/* Photo URL */}
@@ -117,7 +119,7 @@ const Register = () => {
               autoComplete="off"
               required
               name="photoURL"
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="input border-0 border-b-2 bg-secondary rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-primary focus:text-white w-full"
               placeholder="Photo URL"
             />
             {/* Password */}
@@ -128,13 +130,13 @@ const Register = () => {
                 name="currentPassword"
                 autoComplete="new-password"
                 required
-                className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+                className="input border-0 border-b-2 bg-secondary rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-primary focus:text-white w-full"
                 placeholder="Password"
               />
             </div>
 
-            <button className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group w-full mt-2">
-              <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-blue-400 group-hover:h-full"></span>
+            <button className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-primary group w-full mt-2">
+              <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-accent group-hover:h-full"></span>
               <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
                 <svg
                   className="w-5 h-5 text-green-400"
@@ -174,7 +176,7 @@ const Register = () => {
           </form>
           <button
             onClick={handleGoogleLogin}
-            className=" btn   gap-3 rounded-md  bg-black text-white  font-semibold py-2.5 hover:bg-blue-400 hover:border-none hover:font-bold "
+            className=" btn   gap-3 rounded-md  bg-primary text-white  font-semibold py-2.5 hover:bg-accent hover:border-none hover:font-bold "
           >
             <FaGoogle size={24} /> Login With Google Login
           </button>
@@ -185,6 +187,14 @@ const Register = () => {
             </Link>
           </p>
         </div>
+      </div>
+      <div className="border hidden md:block">
+        {" "}
+        <Lottie
+          animationData={reg}
+          loop={true}
+          className=" w-100 h-100 lg:w-150 lg:h-150"
+        />
       </div>
     </div>
   );

@@ -17,9 +17,7 @@ const MyMarathons = () => {
       .then((result) => {
         setMyMarathonList(result?.data);
       })
-      .catch((error) => {
-        // console.log(error);
-      });
+      .catch((error) => {});
   };
 
   useEffect(() => {
@@ -27,15 +25,15 @@ const MyMarathons = () => {
       getMyMarathons();
     }
   }, [user]);
-  // console.log(myMarathonList);
+
   return (
     <div className="">
       <Helmet title="Marathon || My Marathon's"></Helmet>
-      <h1 className=" text-3xl md:text-4xl lg:text-5xl  italic font-bold mt-10 mb-2 text-center">
-        <span className="text-fuchsia-300">My Postde</span> Marathon
+      <h1 className=" text-3xl md:text-4xl lg:text-5xl  italic font-bold pt-10 mb-2 text-center">
+        <span className="text-primary">My Postde</span> Marathon
       </h1>
-      <div className="divider mb-20"></div>
-      <div className="overflow-x-auto rounded-box border border-base-content/5 bg-base-100 shadow-2xl">
+      <div className="divider mb-15"></div>
+      <div className="overflow-x-auto rounded-box border border-base-content/5 bg-secondary shadow-2xl">
         <table className="table">
           <thead>
             <tr>

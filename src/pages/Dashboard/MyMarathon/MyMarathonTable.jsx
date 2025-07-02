@@ -118,7 +118,6 @@ const MyMarathonTable = ({
           e.target.reset();
           document.getElementById(`${myMarathon?._id}`).close();
         }
-        // console.log(result);
       })
       .catch((error) => {
         Swal.fire({
@@ -128,7 +127,6 @@ const MyMarathonTable = ({
           showConfirmButton: false,
           timer: 1500,
         });
-        // console.log(error);
       });
   };
   return (
@@ -144,13 +142,15 @@ const MyMarathonTable = ({
             onClick={() =>
               document.getElementById(`${myMarathon?._id}`).showModal()
             }
-            className="flex mx-auto   items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-base-100 border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none"
+            className="flex mx-auto  items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-white whitespace-no-wrap bg-primary border-2 border-transparent rounded-full shadow-sm hover:bg-accent hover:text-black hover:border-white focus:outline-none"
           >
             Update
           </button>
-          <dialog id={`${myMarathon?._id}`} className="modal  w-full">
-            <div className="modal-box w-4/5">
-              <h3 className="font-bold text-lg">Hello!</h3>
+          <dialog
+            id={`${myMarathon?._id}`}
+            className="modal  w-full bg-secondary"
+          >
+            <div className="modal-box w-4/5 bg-secondary">
               <form
                 onSubmit={handleUpdate}
                 className="space-y-4 p-5 w-full  rounded-2xl shadow-2xl"
@@ -164,7 +164,7 @@ const MyMarathonTable = ({
                       defaultValue={myMarathon?.title}
                       required
                       name="title"
-                      className="input  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      className="input bg-secondary  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-primary focus:text-white w-full"
                       placeholder="Enter Title Name"
                     />
                   </div>
@@ -176,7 +176,7 @@ const MyMarathonTable = ({
                       defaultValue={location}
                       required
                       name="location"
-                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      className="input bg-secondary border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-primary focus:text-white w-full"
                       placeholder="Enter Location"
                     />
                   </div>
@@ -189,7 +189,7 @@ const MyMarathonTable = ({
                     name="description"
                     defaultValue={myMarathon?.description}
                     required
-                    className="textarea  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
+                    className="textarea bg-secondary  border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-primary focus:text-white w-full"
                     placeholder="Description"
                   ></textarea>
                 </div>
@@ -201,7 +201,7 @@ const MyMarathonTable = ({
                       name="distance"
                       defaultValue={myMarathon?.distance}
                       required
-                      className="select validator border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      className="select validator bg-secondary border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-primary focus:text-white w-full"
                     >
                       <option value="" disabled></option>
                       <option value="25 KM">25 KM</option>
@@ -219,23 +219,21 @@ const MyMarathonTable = ({
                       defaultValue={myMarathon?.image}
                       required
                       name="image"
-                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      className="input border-0 bg-secondary border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-primary focus:text-white w-full"
                       placeholder="Enter image URL"
                     />
                   </div>
                 </div>
-                {/* ------------------------------------------- */}
 
                 <div className=" flex flex-col md:flex-row justify-between gap-5 md:gap-8 lg:gap-16 ">
                   {/* Start Registration */}
-                  <div className=" w-full  flex flex-col gap-3 ">
+                  <div className=" w-full bg-secondary  flex flex-col gap-3 ">
                     <label className="label font-bold">
                       Start Registration
                     </label>
                     <DatePicker
                       selected={startRegistration}
                       onChange={(date) => setStartRegistration(date)}
-                      // name="registrationStartDate"
                     />
                   </div>
                   {/*  End Registration */}
@@ -248,8 +246,7 @@ const MyMarathonTable = ({
                     />
                   </div>
                 </div>
-                {/* -------------------------------------------- */}
-                {/* ------------------------------------------- */}
+
                 <div className=" flex flex-col md:flex-row justify-between gap-5 md:gap-8 lg:gap-16 ">
                   {/* Marathon Start Date */}
                   <div className=" w-full  flex flex-col gap-3 ">
@@ -273,7 +270,6 @@ const MyMarathonTable = ({
                     />
                   </div>
                 </div>
-                {/* -------------------------------------------- */}
                 <div className=" flex flex-col md:flex-row gap-5 md:gap-8 lg:gap-16 justify-between">
                   {/* email */}
                   <div className=" w-full">
@@ -284,7 +280,7 @@ const MyMarathonTable = ({
                       name="email"
                       defaultValue={user?.email || ""}
                       disabled
-                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
                       placeholder="Your Email"
                     />
                   </div>
@@ -296,12 +292,12 @@ const MyMarathonTable = ({
                       type="text"
                       disabled
                       defaultValue={user?.displayName || ""}
-                      className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500    font-semibold focus:bg-blue-300 focus:text-white w-full"
+                      className="border-0 border-b-1 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-base-content font-semibold focus:bg-primary focus:text-white w-full"
                       placeholder="Your Name"
                     />
                   </div>
                 </div>
-                <button className="flex mx-auto  md:mt-7 lg:mt-10 items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-base-100 border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none">
+                <button className="flex mx-auto  items-center md:mt-7 lg:mt-10 justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-white whitespace-no-wrap bg-primary border-2 border-transparent rounded-full shadow-sm hover:bg-accent hover:text-black hover:border-white focus:outline-none">
                   Update Task
                 </button>
               </form>
@@ -313,7 +309,7 @@ const MyMarathonTable = ({
 
           <button
             onClick={() => handleDelete(myMarathon._id)}
-            className="flex mx-auto  items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-gray-500 whitespace-no-wrap bg-base-100 border-2 border-transparent rounded-full shadow-sm hover:bg-blue-500 hover:text-white hover:border-white focus:outline-none"
+            className="flex mx-auto  items-center justify-center px-4 py-2 md:px-6 md:py-3  lg:px-8 lg:py-4 text-base font-medium leading-6 text-white whitespace-no-wrap bg-primary border-2 border-transparent rounded-full shadow-sm hover:bg-accent hover:text-black hover:border-white focus:outline-none"
           >
             Delete
           </button>

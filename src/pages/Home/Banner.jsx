@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import img2 from "../../assets/istockphoto-184839421-612x612.jpg";
 import img1 from "../../assets/marathons-2.avif";
 import img3 from "../../assets/best-marathon-banner.jpg";
@@ -17,9 +17,10 @@ const Banner = () => {
         opacity: 1,
         y: [50, 0],
       }}
-      className="bg-base-100"
+      className=""
+      id="banner"
     >
-      <div className="carousel w-full h-[150px] md:h-[250px] lg:h-[550px] mt-15 rounded-2xl">
+      <div className="carousel  w-full h-[250px] md:h-[350px] lg:h-[450px] mt-20 rounded-2xl">
         {/* Slide 1 */}
         <div id="slide1" className="carousel-item relative w-full">
           <img src={img1} className="w-full object-cover" />
@@ -32,7 +33,7 @@ const Banner = () => {
                 transition: { duration: 0.3, delay: 1 },
                 x: [-500, 0],
               }}
-              className="absolute top-40 left-0  h-fit  border rounded-br-[100px] bg-red-200 w-[400px]  opacity-70 flex flex-col justify-center items-center text-white p-5"
+              className="absolute top-40 left-0  h-fit  border rounded-br-[100px] bg-secondary w-[400px]  opacity-70 flex flex-col justify-center items-center text-white p-5"
             >
               <h2 className="text-xl md:text-3xl lg:text-5xl font-bold ">
                 Join the City Marathon 2025!
@@ -72,7 +73,7 @@ const Banner = () => {
                 transition: { duration: 0.3, delay: 1 },
                 x: [-500, 0],
               }}
-              className="absolute top-40 left-0  h-fit  border rounded-br-[100px] bg-red-200 w-[400px]  opacity-70 flex flex-col justify-center items-center text-white p-5"
+              className="absolute top-40 left-0  h-fit  border rounded-br-[100px] bg-secondary w-[400px]  opacity-70 flex flex-col justify-center items-center text-white p-5"
             >
               <h2 className="text-xl md:text-3xl lg:text-5xl font-bold">
                 Create & Manage Marathons
@@ -112,7 +113,7 @@ const Banner = () => {
                 transition: { duration: 0.3, delay: 1 },
                 x: [-500, 0],
               }}
-              className="absolute top-40 left-0  h-fit  border rounded-br-[100px] bg-red-200 w-[400px]  opacity-70 flex flex-col justify-center items-center text-white p-5"
+              className="absolute top-40 left-0  h-fit  border rounded-br-[100px] bg-secondary w-[400px]  opacity-70 flex flex-col justify-center items-center text-white p-5"
             >
               <h2 className="text-xl md:text-3xl lg:text-5xl font-bold">
                 Track Your Progress

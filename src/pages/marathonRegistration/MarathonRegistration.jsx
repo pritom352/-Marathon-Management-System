@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Navigate, useLoaderData, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
@@ -106,7 +106,7 @@ const MarathonRegistration = () => {
               name="title"
               defaultValue={title || ""}
               disabled
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-primary focus:text-white w-full"
             />
           </div>
           {/* start date */}
@@ -117,7 +117,7 @@ const MarathonRegistration = () => {
               name="startDate"
               defaultValue={marathonStartDate || ""}
               disabled
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-primary focus:text-white w-full"
             />
           </div>
         </div>
@@ -133,7 +133,7 @@ const MarathonRegistration = () => {
               name="email"
               defaultValue={user?.email || ""}
               disabled
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-primary focus:text-white w-full"
             />
           </div>
           {/* first name */}
@@ -143,7 +143,7 @@ const MarathonRegistration = () => {
             <input
               type="text"
               name="firstName"
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-primary focus:text-white w-full"
               placeholder="Enter Your First Name"
               required
             />
@@ -161,7 +161,7 @@ const MarathonRegistration = () => {
               name="lastName"
               required
               placeholder="Enter Your Last Name:"
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-primary focus:text-white w-full"
             />
           </div>
           {/* Address */}
@@ -172,7 +172,7 @@ const MarathonRegistration = () => {
               required
               type="Address"
               name="address"
-              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white w-full"
+              className="input border-0 border-b-2 rounded-b-none focus:rounded focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-primary focus:text-white w-full"
               placeholder="Enter Your Address"
             />
           </div>
@@ -184,7 +184,7 @@ const MarathonRegistration = () => {
             type="number"
             required
             name="contactNumber"
-            className="input border-2 text-center mx-auto  rounded-b-none focus:rounded mt-1 focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-blue-300 focus:text-white "
+            className="input border-2 text-center mx-auto  rounded-b-none focus:rounded mt-1 focus:border-2 focus:border-blue-500 text-black font-semibold focus:bg-primary focus:text-white "
             placeholder="Enter Your Number"
           />
         </div>

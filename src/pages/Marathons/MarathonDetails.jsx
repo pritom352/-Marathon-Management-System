@@ -21,15 +21,8 @@ const MarathonDetails = () => {
     _id,
   } = data.data;
 
-  // console.log(registrationStartDate);
-  // console.log(registrationEndDate);
-  // console.log(marathonStartDate);
-
   const { user } = useContext(AuthContext);
   const registerd = data?.data.totalRegistrations.includes(user?.email);
-  // console.log(data?.data.totalRegistrations);
-
-  // console.log("idddddddddddd", registerd);
 
   const parseDate = (dateString) => {
     const [day, month, year] = dateString.split("/");
@@ -43,7 +36,6 @@ const MarathonDetails = () => {
     (new Date(`${year}-${month}-${day}`).getTime() - new Date().getTime()) /
       1000
   );
-  // console.log("remainingTime", marathonStartDate);
 
   const getTimeParts = (time) => {
     const days = Math.floor(time / (60 * 60 * 24));
@@ -51,15 +43,12 @@ const MarathonDetails = () => {
     const minutes = Math.floor((time % (60 * 60)) / 60);
     return { days, hours, minutes };
   };
-  // console.log(todayDateObj);
-  // console.log(registrationStartDate);
-  // console.log(registrationEndDate);
 
   return (
     <div>
       <Helmet title="Marathon || Detail's"></Helmet>
 
-      <div className="flex items-center  flex-col lg:flex-row gap-4 md:gap-7 lg:gap-10 rounded-2xl p-3 shadow-2xl bg-base-100 mt-10">
+      <div className="flex items-center  flex-col lg:flex-row gap-4 md:gap-7 lg:gap-10 rounded-2xl p-3 shadow-2xl bg-secondary mt-10">
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           transition={{ duration: 1 }}
@@ -72,7 +61,7 @@ const MarathonDetails = () => {
             alt=""
           />
           {/* Countdown timer overlay */}
-          <div className="absolute top-4 right-4 bg-transparent px-3 py-2 rounded-full  shadow-lg">
+          <div className="absolute top-4 right-4 bg-transparent text-white px-3 py-2 rounded-full  shadow-lg">
             <CountdownCircleTimer
               isPlaying
               duration={remainingTime}
@@ -109,10 +98,10 @@ const MarathonDetails = () => {
           initial={{ scale: 0.5, opacity: 0 }}
           transition={{ duration: 1 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="flex-1  h-[300px] overflow-scroll rounded-2xl shadow-2xl bg-base-100 p-5"
+          className="flex-1  h-[300px] overflow-scroll rounded-2xl shadow-2xl bg-secendary p-5"
         >
-          <div className="md:flex justify-between bg-base-100">
-            <div className="space-y-0.5 bg-base-100 md:space-y-2">
+          <div className="md:flex justify-between bg-secendary">
+            <div className="space-y-0.5 bg-secendary md:space-y-2">
               <h1>
                 <span className="font-bold">Title: </span>
                 {title}
@@ -122,7 +111,7 @@ const MarathonDetails = () => {
                 {createdAt}
               </h1>
             </div>
-            <div className="space-y-2 bg-base-100">
+            <div className="space-y-2 bg-secendary">
               <h1>
                 <span className="font-bold">Location: </span>
                 {location}
@@ -133,7 +122,7 @@ const MarathonDetails = () => {
               </h1>
             </div>
           </div>
-          <p className="my-6 p-3 bg-base-100 shadow-2xs rounded-2xl">
+          <p className="my-6 p-3 bg-secendary base-100 shadow-2xs rounded-2xl">
             {description}
           </p>
           <div className="md:flex justify-between">
