@@ -85,7 +85,7 @@ const Register = () => {
       });
   };
   return (
-    <div className=" flex border justify-around items-center">
+    <div className=" flex  justify-around items-center">
       <Helmet title="Marathon || Registration"></Helmet>
 
       <div className="card bg-secondary w-full max-w-sm shrink-0 shadow-2xl  mt-20">

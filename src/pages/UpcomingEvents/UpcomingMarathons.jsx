@@ -13,7 +13,7 @@ const UpcomingMarathons = ({ upcomingApi }) => {
   const inView = useInView(ref, { once: true });
 
   return (
-    <div className=" border  mt-20">
+    <div className="   mt-20">
       <motion.h1
         ref={ref}
         initial={{ scale: 0.5, opacity: 0 }}

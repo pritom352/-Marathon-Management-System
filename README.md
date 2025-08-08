@@ -6,7 +6,7 @@
 
 ## 🌐 Live Site
 
-🔗 [Live Site](https://assignment-11-f435a.web.app/)
+🔗 [Live Site](https://effervescent-otter-ee5a9f.netlify.app/)
 
 ---
 
