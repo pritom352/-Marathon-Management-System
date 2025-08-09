@@ -9,30 +9,14 @@ import {
   FaHourglassStart,
   FaStar,
 } from "react-icons/fa";
+import SectionTitle from "../../components/ReusableComponent/SectionTitle";
 
 const CountUpSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
   return (
-    <div
-      ref={ref}
-      initial={{ scale: 0.5, opacity: 0 }}
-      animate={
-        inView
-          ? {
-              scale: 1,
-
-              transition: { duration: 1 },
-              opacity: 1,
-              y: [50, 0],
-            }
-          : {}
-      }
-      className="my-20 px-4 sm:px-6 lg:px-20"
-    >
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-15">
-        <span className="text-primary">Our Marathon</span> Achievements
-      </h2>
+    <div className="my-20 px-4 ">
+      <SectionTitle title={"Our Marathon Achievements"} />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <motion.div
           ref={ref}

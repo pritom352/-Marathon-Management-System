@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import SectionTitle from "../../components/ReusableComponent/SectionTitle";
 
 const AddMarathon = () => {
   const { user } = useContext(AuthContext);
@@ -77,9 +78,7 @@ const AddMarathon = () => {
     <div className=" md:px-10  py-10  lg:px-30  bg-secondary ">
       <Helmet title="Add || Marathon"></Helmet>
 
-      <h1 className=" text-2xl md:text-3xl lg:text-5xl mb-15 font-bold italic text-center text-primary">
-        Add <span className=" text-base-content">Task</span>
-      </h1>
+      <SectionTitle title={"Add Task"} />
       <form
         onSubmit={handleAddMarathon}
         className="space-y-4 p-5   rounded-2xl shadow-2xl"

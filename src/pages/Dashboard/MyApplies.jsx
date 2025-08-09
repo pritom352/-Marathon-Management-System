@@ -4,6 +4,7 @@ import axios from "axios";
 import MyApplyTable from "./MyApplyTable";
 import { Helmet } from "react-helmet";
 import Loader from "../../components/Loader";
+import SectionTitle from "../../components/ReusableComponent/SectionTitle";
 
 const MyApplies = () => {
   const { user } = useContext(AuthContext);
@@ -38,11 +39,10 @@ const MyApplies = () => {
   }, [user, search]);
 
   return (
-    <div>
+    <div className=" pt-20">
       <Helmet title="Marathon || Applyed"></Helmet>
-      <h1 className=" text-3xl md:text-4xl lg:text-5xl  italic font-bold mt-20 mb-2 text-center">
-        <span className="text-primary">My</span> Applies
-      </h1>
+
+      <SectionTitle title={"My Applies"} />
       <div className="divider mb-15"></div>
       <form
         onSubmit={handleSearch}

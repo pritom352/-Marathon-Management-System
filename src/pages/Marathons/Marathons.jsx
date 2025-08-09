@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router";
 import Card from "../Home/Card";
 import { Helmet } from "react-helmet";
+import SectionTitle from "../../components/ReusableComponent/SectionTitle";
 
 const Marathons = () => {
   const allData = useLoaderData();
@@ -20,9 +21,8 @@ const Marathons = () => {
   return (
     <div className="my-20">
       <Helmet title="Marathon || All" />
-      <h1 className=" text-5xl text-center font-bold mb-2">
-        <span className="text-primary">All</span> Marathons
-      </h1>
+
+      <SectionTitle title={"All Marathons"} />
       <div className="divider mb-15"></div>
 
       <div className="text-center mb-15">

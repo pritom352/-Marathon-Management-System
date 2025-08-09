@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import MyMarathonTable from "./MyMarathonTable";
 import { Helmet } from "react-helmet";
+import SectionTitle from "../../../components/ReusableComponent/SectionTitle";
 
 const MyMarathons = () => {
   const { user } = useContext(AuthContext);
@@ -27,11 +28,10 @@ const MyMarathons = () => {
   }, [user]);
 
   return (
-    <div className="">
+    <div className="pt-5">
       <Helmet title="Marathon || My Marathon's"></Helmet>
-      <h1 className=" text-3xl md:text-4xl lg:text-5xl  italic font-bold pt-10 mb-2 text-center">
-        <span className="text-primary">My Postde</span> Marathon
-      </h1>
+
+      <SectionTitle title={"My Postde Marathon"} />
       <div className="divider mb-15"></div>
       <div className="overflow-x-auto rounded-box border border-base-content/5 bg-secondary shadow-2xl">
         <table className="table">

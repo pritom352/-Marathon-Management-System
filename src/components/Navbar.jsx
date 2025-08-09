@@ -105,10 +105,18 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <img className="  w-[60px] h-[50px] rounded-2xl " src={logo} alt="" />
-          <h1 className=" font-bold text-xl">
-            <span className=" text-secondary ml-1">Run</span>ova
-          </h1>
+          <Link to={"/"}>
+            <div className=" flex items-center">
+              <img
+                className="  w-[60px] h-[50px] rounded-2xl "
+                src={logo}
+                alt=""
+              />
+              <h1 className=" font-bold text-xl">
+                <span className=" text-secondary ml-1">Run</span>ova
+              </h1>
+            </div>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>

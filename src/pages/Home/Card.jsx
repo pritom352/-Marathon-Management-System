@@ -56,7 +56,7 @@ const Card = ({ marathonData }) => {
           </h4>
 
           <Link to={`/marathon/${_id}`} className="mt-auto">
-            <button className="relative w-full py-2 rounded-full bg-primary text-white hover:bg-accent hover:text-black transition-all font-semibold">
+            <button className="relative w-full py-2 rounded-full bg-primary text-black hover:bg-accent hover:text-white transition-all font-semibold">
               See Details
             </button>
           </Link>
