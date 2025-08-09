@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router";
 import UpcomingMarathons from "../UpcomingEvents/UpcomingMarathons";
 import Reviews from "./Reviews";
 import CountUpSection from "./CountUpSection";
+import RunningBenefits from "./RunningBenefits";
 
 const Home = () => {
   const upcomingApi = fetch("upcoming.json").then((res) => res.json());
@@ -32,6 +33,7 @@ const Home = () => {
           upcomingApi={upcomingApi}
         ></UpcomingMarathons>
       </Suspense>
+      <RunningBenefits></RunningBenefits>
       <Reviews textimonials={textimonials}></Reviews>
       <CountUpSection></CountUpSection>
     </div>

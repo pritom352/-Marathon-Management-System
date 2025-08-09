@@ -19,7 +19,7 @@ const SectionTitle = ({ title }) => {
             }
           : {}
       }
-      className="text-2xl md:text-3xl lg:text-4xl font-bold text-center italic mb-12 flex items-center justify-center gap-4"
+      className="text-xl md:text-2xl lg:text-2xl font-bold text-center italic mb-12 flex items-center justify-center gap-4"
     >
       {/* Left bar */}
       <span className="w-12 h-[2px] bg-primary"></span>
