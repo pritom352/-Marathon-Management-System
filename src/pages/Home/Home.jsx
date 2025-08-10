@@ -6,6 +6,7 @@ import UpcomingMarathons from "../UpcomingEvents/UpcomingMarathons";
 import Reviews from "./Reviews";
 import CountUpSection from "./CountUpSection";
 import RunningBenefits from "./RunningBenefits";
+import UpcomingMarathon from "./UpcomingMarathon";
 
 const Home = () => {
   const upcomingApi = fetch("upcoming.json").then((res) => res.json());
@@ -22,7 +23,7 @@ const Home = () => {
         setTextimonials(data);
       });
   }, []);
-  // console.log(textimonials);
+  console.log(textimonials);
   return (
     <div>
       <Banner></Banner>
@@ -33,6 +34,7 @@ const Home = () => {
           upcomingApi={upcomingApi}
         ></UpcomingMarathons>
       </Suspense>
+      <UpcomingMarathon></UpcomingMarathon>
       <RunningBenefits></RunningBenefits>
       <Reviews textimonials={textimonials}></Reviews>
       <CountUpSection></CountUpSection>
