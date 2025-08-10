@@ -52,17 +52,17 @@ const UpcomingMarathon = () => {
             <div className="flex flex-col md:flex-row rounded-xl min-h-[350px] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
               {/* Left Part */}
               <div className="bg-primary flex flex-col justify-center items-center p-6 md:w-1/6 w-full space-y-6">
-                <p className="font-extrabold text-2xl tracking-wide">
+                <p className="font-extrabold lg:text-2xl  tracking-wide">
                   {marathonDate}
                 </p>
-                <button className="px-6 py-2 border border-white rounded-full hover:bg-accent hover:text-primary transition duration-300 font-semibold">
+                <button className="px-3 lg:px-6 py-2 border border-white rounded-full hover:bg-accent hover:text-primary transition duration-300 font-semibold">
                   Details
                 </button>
               </div>
 
               {/* Middle Part */}
               <div className="bg-secondary flex flex-col justify-center p-6 md:w-3/6 w-full space-y-6 text-gray-900">
-                <h2 className="text-3xl font-bold tracking-wide">
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide">
                   {marathon.title}
                 </h2>
 

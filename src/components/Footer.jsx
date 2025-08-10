@@ -56,7 +56,7 @@ const Footer = () => {
   );
 
   return (
-    <div className="pt-20">
+    <div className="">
       <footer className="bg-secondary py-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 flex-wrap max-w-7xl mx-auto px-6">
           {/* Branding */}

@@ -77,7 +77,7 @@ const AddMarathon = () => {
   };
 
   return (
-    <div className=" md:px-10  py-10  lg:px-30  bg-secondary ">
+    <div className="   bg-secondary ">
       <Helmet title="Add || Marathon"></Helmet>
 
       <SectionTitle title={"Add Task"} />
