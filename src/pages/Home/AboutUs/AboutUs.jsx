@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router";
+import SectionTitle from "../../../components/ReusableComponent/SectionTitle";
 
 const AboutUs = () => {
   return (
     <div className="  bg-accent text-[#1E1E1E] px-4 md:px-10 my-20">
       <div className="max-w-6xl mx-auto space-y-10">
-        <h1 className="text-3xl md:text-5xl font-bold text-primary text-center mb-2">
-          About <span className="text-secondary">Runova</span>
-        </h1>
+        <SectionTitle title={"About Runova"} />
         <div className="divider mb-15"></div>
 
         <p className="text-lg leading-8 text-center max-w-3xl mx-auto">
@@ -18,7 +17,7 @@ const AboutUs = () => {
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 text-center">
-          <div className="bg-accent rounded-xl p-6 shadow-md hover:shadow-xl transition">
+          <div className="bg-secondary rounded-xl p-6 shadow-md hover:shadow-xl transition">
             <h3 className="text-xl font-bold text-primary mb-2">
               For Organizers
             </h3>
@@ -28,7 +27,7 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <div className="bg-accent rounded-xl p-6 shadow-md hover:shadow-xl transition">
+          <div className="bg-secondary rounded-xl p-6 shadow-md hover:shadow-xl transition">
             <h3 className="text-xl font-bold text-primary mb-2">For Runners</h3>
             <p className="text-sm leading-relaxed">
               Discover marathons, apply in seconds, stay informed, and prepare
@@ -37,7 +36,7 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <div className="bg-accent rounded-xl p-6 shadow-md hover:shadow-xl transition">
+          <div className="bg-secondary rounded-xl p-6 shadow-md hover:shadow-xl transition">
             <h3 className="text-xl font-bold text-primary mb-2">Our Vision</h3>
             <p className="text-sm leading-relaxed">
               We believe in connecting people through purpose and passion.

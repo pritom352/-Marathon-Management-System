@@ -17,7 +17,6 @@ const DashboardLayout = () => {
 
   const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
 
-  // এখন সরাসরি JSX এ Link ব্যবহার করব, icon সহ
   const linkClasses = (path) =>
     `flex items-center gap-3 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
       location.pathname === path
@@ -78,7 +77,6 @@ const DashboardLayout = () => {
               <button
                 className="w-full flex items-center gap-3 px-4 py-2 text-red-600 hover:bg-red-100 rounded-lg font-semibold"
                 onClick={() => {
-                  // TODO: লগআউট ফাংশন এখানে বসাবি
                   alert("Logout clicked");
                 }}
               >

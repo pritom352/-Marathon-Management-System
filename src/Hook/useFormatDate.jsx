@@ -11,7 +11,6 @@ const useFormatDate = (isoDateString) => {
     try {
       const date = new Date(isoDateString);
 
-      // "en-GB" locale use করলে date "DD/MM/YYYY" ফরম্যাটে পাওয়া যায়
       const formatted = date.toLocaleDateString("en-GB");
 
       setFormattedDate(formatted);

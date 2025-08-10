@@ -38,8 +38,7 @@ const router = createBrowserRouter([
       { path: "/register", element: <Register /> },
       {
         path: "/marathons",
-        loader: () =>
-          axios("https://assignmein11.vercel.app/alldddMarathonData"),
+        loader: () => axios("https://assignmein11.vercel.app/allMarathonData"),
         hydrateFallbackElement: <Loader />,
         errorElement: <ErrorPage />,
         element: <Marathons />,
