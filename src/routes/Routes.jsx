@@ -18,35 +18,38 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import DashbordHome from "../pages/Dashboard/DefaultDashboard/DashbordHome";
 import AboutUs from "../pages/Home/AboutUs/AboutUs";
 import Contact from "../pages/Contact/Contact";
+import ForeoFore from "../pages/ForeoFore";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: <ErrorPage></ErrorPage>,
-
-    hydrateFallbackElement: <Loader></Loader>,
-
+    errorElement: <ErrorPage />, // MainLayout level error
+    hydrateFallbackElement: <Loader />,
     children: [
       {
         path: "/",
         loader: () => axios("https://assignmein11.vercel.app/data"),
-        hydrateFallbackElement: <Loader></Loader>,
+        hydrateFallbackElement: <Loader />,
+        errorElement: <ErrorPage />, // loader fail হলে show হবে
         element: <Home />,
       },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       {
         path: "/marathons",
-        loader: () => axios("https://assignmein11.vercel.app/allMarathonData"),
-        hydrateFallbackElement: <Loader></Loader>,
+        loader: () =>
+          axios("https://assignmein11.vercel.app/alldddMarathonData"),
+        hydrateFallbackElement: <Loader />,
+        errorElement: <ErrorPage />,
         element: <Marathons />,
       },
       {
         path: "/marathon/:id",
         loader: ({ params }) =>
           axios(`https://assignmein11.vercel.app/allData/${params.id}`),
-        hydrateFallbackElement: <Loader></Loader>,
+        hydrateFallbackElement: <Loader />,
+        errorElement: <ErrorPage />,
         element: (
           <PrivateRoute>
             <MarathonDetails />
@@ -65,10 +68,11 @@ const router = createBrowserRouter([
         path: "/marathonRegistration/:id",
         loader: ({ params }) =>
           axios(`https://assignmein11.vercel.app/allData/${params.id}`),
-        hydrateFallbackElement: <Loader></Loader>,
+        hydrateFallbackElement: <Loader />,
+        errorElement: <ErrorPage />,
         element: (
           <PrivateRoute>
-            <MarathonRegistration></MarathonRegistration>
+            <MarathonRegistration />
           </PrivateRoute>
         ),
       },
@@ -82,12 +86,12 @@ const router = createBrowserRouter([
         <DashboardLayout />
       </PrivateRoute>
     ),
-    hydrateFallbackElement: <Loader></Loader>,
-    errorElement: <ErrorPage></ErrorPage>,
+    hydrateFallbackElement: <Loader />,
+    errorElement: <ErrorPage />, // DashboardLayout level error
     children: [
       {
         index: true,
-        element: <DashbordHome></DashbordHome>,
+        element: <DashbordHome />,
       },
       {
         path: "addMarathon",
@@ -99,7 +103,8 @@ const router = createBrowserRouter([
       },
       {
         path: "myMarathons",
-        hydrateFallbackElement: <Loader></Loader>,
+        hydrateFallbackElement: <Loader />,
+        errorElement: <ErrorPage />,
         element: (
           <PrivateRoute>
             <MyMarathons />
@@ -108,7 +113,8 @@ const router = createBrowserRouter([
       },
       {
         path: "myApplies",
-        hydrateFallbackElement: <Loader></Loader>,
+        hydrateFallbackElement: <Loader />,
+        errorElement: <ErrorPage />,
         element: (
           <PrivateRoute>
             <MyApplies />
@@ -117,7 +123,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  { path: "*", element: <ErrorPage></ErrorPage> },
+  { path: "*", element: <ForeoFore /> },
 ]);
 
 export default router;

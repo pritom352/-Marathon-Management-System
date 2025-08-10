@@ -7,10 +7,13 @@ import {
 } from "react-icons/fa";
 import formatDate from "../../utils/formatDate";
 import SectionTitle from "../../components/ReusableComponent/SectionTitle";
+import Loader from "../../components/Loader";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 const UpcomingMarathon = () => {
   const [marathons, setMarathons] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null); // Error state
 
   useEffect(() => {
     axios
@@ -19,15 +22,15 @@ const UpcomingMarathon = () => {
         setMarathons(res.data);
         setLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
+        setError(err.message || "Failed to load upcoming marathons.");
         setLoading(false);
       });
   }, []);
 
-  if (loading)
-    return (
-      <p className="text-center mt-10 text-lg font-semibold">Loading...</p>
-    );
+  if (loading) return <Loader />;
+
+  if (error) return <ErrorPage message={error} />; // Error page দেখাবে
 
   if (marathons.length === 0)
     return (
@@ -37,7 +40,7 @@ const UpcomingMarathon = () => {
     );
 
   return (
-    <section className="space-y-12 mt-25 ">
+    <section className="space-y-12 mt-25">
       <SectionTitle title="Upcoming Marathon" />
       {marathons.map((marathon) => {
         const regStart = formatDate(marathon.registrationStartDate);
@@ -45,13 +48,10 @@ const UpcomingMarathon = () => {
         const marathonDate = formatDate(marathon.marathonStartDate);
 
         return (
-          <div>
-            <div
-              key={marathon._id}
-              className="flex flex-col md:flex-row  rounded-xl min-h-[300px] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
-            >
+          <div key={marathon._id}>
+            <div className="flex flex-col md:flex-row rounded-xl min-h-[350px] overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
               {/* Left Part */}
-              <div className="bg-primary  flex flex-col justify-center items-center p-6 md:w-1/6 w-full space-y-6">
+              <div className="bg-primary flex flex-col justify-center items-center p-6 md:w-1/6 w-full space-y-6">
                 <p className="font-extrabold text-2xl tracking-wide">
                   {marathonDate}
                 </p>
@@ -92,7 +92,7 @@ const UpcomingMarathon = () => {
                 <img
                   src={marathon.image}
                   alt={marathon.title}
-                  className="w-full h-full object-cover rounded-tr-xl rounded-br-xl md:rounded-tr-xl md:rounded-br-xl"
+                  className="w-full h-full object-cover"
                   style={{ minHeight: "250px" }}
                 />
               </div>
