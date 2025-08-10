@@ -23,9 +23,9 @@ const Marathons = () => {
       <Helmet title="Marathon || All" />
 
       <SectionTitle title={"All Marathons"} />
-      <div className="divider mb-15"></div>
+      <div className="divider mb-10"></div>
 
-      <div className="text-center mb-15">
+      <div className="text-center mb-10">
         <label className="mr-2 font-semibold">Sort by:</label>
         <select
           className="select bg-secondary focus:bg-primary select-bordered"

@@ -23,17 +23,17 @@ const Home = () => {
         setTextimonials(data);
       });
   }, []);
-  console.log(textimonials);
+
   return (
     <div>
       <Banner></Banner>
       <MarathonsSections marathonsData={marathonsData}></MarathonsSections>
-      <Suspense fallback={<h1>data is loading.........</h1>}>
+      {/* <Suspense fallback={<h1>data is loading.........</h1>}>
         <UpcomingMarathons
           key={upcomingApi.id}
           upcomingApi={upcomingApi}
         ></UpcomingMarathons>
-      </Suspense>
+      </Suspense> */}
       <UpcomingMarathon></UpcomingMarathon>
       <RunningBenefits></RunningBenefits>
       <Reviews textimonials={textimonials}></Reviews>

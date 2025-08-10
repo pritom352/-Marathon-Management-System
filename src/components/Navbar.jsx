@@ -37,12 +37,14 @@ const Navbar = () => {
           <span className=" absolute bg-blue-500 h-[2px] group-hover:w-full left-0 w-0 -bottom-1 duration-200"></span>
         </p>
       </NavLink>
-      <NavLink to="/marathons">
-        <p className="group cursor-pointer relative">
-          Marathons
-          <span className=" absolute bg-blue-500 h-[2px] group-hover:w-full left-0 w-0 -bottom-1 duration-200"></span>
-        </p>
-      </NavLink>
+      {user && (
+        <NavLink to="/marathons">
+          <p className="group cursor-pointer relative">
+            Marathons
+            <span className=" absolute bg-blue-500 h-[2px] group-hover:w-full left-0 w-0 -bottom-1 duration-200"></span>
+          </p>
+        </NavLink>
+      )}
       <NavLink to="/aboutUs">
         <p className="group cursor-pointer relative">
           About Us
@@ -78,7 +80,7 @@ const Navbar = () => {
   };
   return (
     <div className=" shadow-sm bg-primary sticky  top-0 z-50">
-      <div className="navbar  max-w-10/11 md:max-w-9/11 lg:max-w-8/10 mx-auto">
+      <div className="navbar  max-w-14/15 md:max-w-10/11 lg:max-w-9/10 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -108,11 +110,11 @@ const Navbar = () => {
           <Link to={"/"}>
             <div className=" flex items-center">
               <img
-                className="  w-[60px] h-[50px] rounded-2xl "
+                className=" w-[40px] h-[30px]  lg:w-[60px] lg:h-[50px] rounded-2xl "
                 src={logo}
                 alt=""
               />
-              <h1 className=" font-bold text-xl">
+              <h1 className=" font-semibold md:font-bold text-xl">
                 <span className=" text-secondary ml-1">Run</span>ova
               </h1>
             </div>
@@ -131,7 +133,7 @@ const Navbar = () => {
 
             {/* sun icon */}
             <svg
-              className="swap-on h-8 w-8 fill-current"
+              className="swap-on h-5 w-5 md:h-8 md:w-8 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -140,7 +142,7 @@ const Navbar = () => {
 
             {/* moon icon */}
             <svg
-              className="swap-off h-8 w-8 fill-current"
+              className="swap-off h-5 w-5 md:h-8 md:w-8 fill-current"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -150,13 +152,13 @@ const Navbar = () => {
           {user ? (
             <>
               <img
-                className=" w-[50px] h-[50px]   rounded-full mr-2"
+                className=" w-[40px] h-[40px] md:w-[50px] md:h-[50px]   rounded-full mr-2"
                 src={user?.photoURL}
                 alt=""
               />
               <button
                 onClick={handleLogout}
-                className="relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-mono font-medium tracking-tighter hover:text-black bg-primary text-white border  border-black  rounded-lg group"
+                className="relative inline-flex items-center justify-center  px-3 py-1 md:px-6 md:py-3 overflow-hidden font-mono font-medium tracking-tighter hover:text-black bg-primary text-white border  border-secondary  rounded-lg group"
               >
                 <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-accent  rounded-full group-hover:w-56  group-hover:h-56"></span>
                 <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30  bg-gradient-to-b from-transparent via-transparent  "></span>
@@ -166,14 +168,14 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/login">
-                <button className="relative border text-white inline-flex items-center justify-center px-6 py-3 overflow-hidden font-mono font-medium tracking-tighter hover:text-black  rounded-lg group">
+                <button className="relative border text-white inline-flex items-center justify-center  px-3 py-1 md:px-6 md:py-3 overflow-hidden font-mono font-medium tracking-tighter hover:text-black  rounded-lg group">
                   <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-secondary  rounded-full group-hover:w-56  group-hover:h-56"></span>
                   <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30  bg-gradient-to-b from-transparent via-transparent  "></span>
                   <span className="relative ">Login</span>
                 </button>
               </Link>
               <Link to="/register">
-                <button className="relative border ml-2 text-white inline-flex items-center justify-center px-6 py-3 overflow-hidden font-mono font-medium tracking-tighter hover:text-black  rounded-lg group">
+                <button className="relative border ml-2 text-white inline-flex items-center justify-center px-3 py-1 md:px-6 md:py-3 overflow-hidden font-mono font-medium tracking-tighter hover:text-black  rounded-lg group">
                   <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-secondary rounded-full group-hover:w-56  group-hover:h-56"></span>
                   <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30  bg-gradient-to-b from-transparent via-transparent  "></span>
                   <span className="relative">Register</span>

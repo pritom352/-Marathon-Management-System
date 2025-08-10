@@ -33,7 +33,7 @@ const Banner = () => {
                 transition: { duration: 0.3, delay: 1 },
                 x: [-500, 0],
               }}
-              className="absolute top-40 left-0  h-fit  border rounded-br-[100px] bg-secondary w-[400px]  opacity-70 flex flex-col justify-center items-center text-white p-5"
+              className="absolute hidden md:flex top-40 left-0 h-fit border  rounded-br-[100px] bg-secondary w-[400px] opacity-70 flex-col justify-center items-center text-white p-5"
             >
               <h2 className="text-xl md:text-3xl lg:text-5xl font-bold ">
                 Join the City Marathon 2025!
@@ -73,7 +73,7 @@ const Banner = () => {
                 transition: { duration: 0.3, delay: 1 },
                 x: [-500, 0],
               }}
-              className="absolute top-40 left-0  h-fit  border rounded-br-[100px] bg-secondary w-[400px]  opacity-70 flex flex-col justify-center items-center text-white p-5"
+              className="absolute hidden md:flex top-40 left-0 h-fit border  rounded-br-[100px] bg-secondary w-[400px] opacity-70 flex-col justify-center items-center text-white p-5"
             >
               <h2 className="text-xl md:text-3xl lg:text-5xl font-bold">
                 Create & Manage Marathons
@@ -113,7 +113,7 @@ const Banner = () => {
                 transition: { duration: 0.3, delay: 1 },
                 x: [-500, 0],
               }}
-              className="absolute top-40 left-0  h-fit  border rounded-br-[100px] bg-secondary w-[400px]  opacity-70 flex flex-col justify-center items-center text-white p-5"
+              className="absolute hidden md:flex top-40 left-0 h-fit border  rounded-br-[100px] bg-secondary w-[400px] opacity-70 flex-col justify-center items-center text-white p-5"
             >
               <h2 className="text-xl md:text-3xl lg:text-5xl font-bold">
                 Track Your Progress

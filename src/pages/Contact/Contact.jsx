@@ -18,7 +18,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-5 py-16">
+    <div className=" my-20">
       <Helmet>
         <title>Runova | Contact</title>
       </Helmet>

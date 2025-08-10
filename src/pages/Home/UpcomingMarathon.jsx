@@ -40,7 +40,7 @@ const UpcomingMarathon = () => {
     );
 
   return (
-    <section className="space-y-12 mt-25">
+    <section className="space-y-12 mt-20">
       <SectionTitle title="Upcoming Marathon" />
       {marathons.map((marathon) => {
         const regStart = formatDate(marathon.registrationStartDate);

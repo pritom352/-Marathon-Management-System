@@ -4,10 +4,10 @@ import SectionTitle from "../../../components/ReusableComponent/SectionTitle";
 
 const AboutUs = () => {
   return (
-    <div className="  bg-accent text-[#1E1E1E] px-4 md:px-10 my-20">
+    <div className="  bg-accent text-[#1E1E1E]   my-20">
       <div className="max-w-6xl mx-auto space-y-10">
         <SectionTitle title={"About Runova"} />
-        <div className="divider mb-15"></div>
+        <div className="divider mb-10"></div>
 
         <p className="text-lg leading-8 text-center max-w-3xl mx-auto">
           Runova is a powerful and intuitive platform built to simplify marathon

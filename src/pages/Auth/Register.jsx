@@ -88,7 +88,7 @@ const Register = () => {
     <div className=" flex  justify-around items-center">
       <Helmet title="Marathon || Registration"></Helmet>
 
-      <div className="card bg-secondary w-full max-w-sm shrink-0 shadow-2xl  mt-20">
+      <div className="card bg-secondary w-full max-w-sm shrink-0 shadow-2xl  my-20">
         <h2 className=" text-3xl font-bold mx-auto  mt-3 text-primary  text-shadow-lg ">
           Register <span className=" text-black ">Now</span>
         </h2>

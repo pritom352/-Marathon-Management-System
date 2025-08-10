@@ -28,11 +28,11 @@ const MyMarathons = () => {
   }, [user]);
 
   return (
-    <div className="pt-5">
+    <div className="mt-20">
       <Helmet title="Marathon || My Marathon's"></Helmet>
 
       <SectionTitle title={"My Postde Marathon"} />
-      <div className="divider mb-15"></div>
+      <div className="divider mb-10"></div>
       <div className="overflow-x-auto rounded-box border border-base-content/5 bg-secondary shadow-2xl">
         <table className="table">
           <thead>

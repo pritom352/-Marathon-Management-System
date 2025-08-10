@@ -14,8 +14,6 @@ const AddMarathon = () => {
   const [startDate, setStartDate] = useState(null);
 
   const date = new Date();
-  console.log(date);
-  console.log(startDate);
 
   const handleAddMarathon = (e) => {
     e.preventDefault();
@@ -77,7 +75,7 @@ const AddMarathon = () => {
   };
 
   return (
-    <div className="   bg-secondary ">
+    <div className="  mt-20  bg-secondary ">
       <Helmet title="Add || Marathon"></Helmet>
 
       <SectionTitle title={"Add Task"} />

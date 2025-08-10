@@ -17,10 +17,10 @@
 @plugin "daisyui/theme" {
   name: "dark";
   default: true;
-  --color-primary: #515195;
+  --color-primary: #313151;
   /* --color-primary: #454948; */
-  --color-secondary: #6c8ea4;
-  --color-accent: #303d3c;
+  --color-secondary: #1f4d6a;
+  --color-accent: #0a0a23;
 }
 body {
   font-family: "Poppins", sans-serif;

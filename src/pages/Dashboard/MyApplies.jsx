@@ -11,7 +11,6 @@ const MyApplies = () => {
   const [myApplies, setMyApplies] = useState(null);
   const [search, setSearch] = useState("");
 
-  console.log(search);
   const MyApplyUpdate = () => {
     axios
       .get(
@@ -43,7 +42,7 @@ const MyApplies = () => {
       <Helmet title="Marathon || Applyed"></Helmet>
 
       <SectionTitle title={"My Applies"} />
-      <div className="divider mb-15"></div>
+      <div className="divider mb-10"></div>
       <form
         onSubmit={handleSearch}
         className=" flex justify-center  gap-5 mb-10 "
