@@ -4,18 +4,16 @@ import { Link, useLoaderData } from "react-router";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { AuthContext } from "../../context/AuthContext";
 import { Helmet } from "react-helmet";
+import useFormatDate from "../../Hook/useFormatDate";
 
 const MarathonDetails = () => {
   const data = useLoaderData();
   const {
-    createdAt,
     description,
     distance,
     image,
     location,
-    marathonStartDate,
-    registrationEndDate,
-    registrationStartDate,
+
     title,
     totalRegistrations,
     _id,
@@ -23,6 +21,12 @@ const MarathonDetails = () => {
 
   const { user } = useContext(AuthContext);
   const registerd = data?.data.totalRegistrations.includes(user?.email);
+  const registrationEndDate = useFormatDate(data?.data?.registrationEndDate);
+  const marathonStartDate = useFormatDate(data?.data?.marathonStartDate);
+  const createdAt = useFormatDate(data?.data?.createdAt);
+  const registrationStartDate = useFormatDate(
+    data?.data?.registrationStartDate
+  );
 
   const parseDate = (dateString) => {
     const [day, month, year] = dateString.split("/");

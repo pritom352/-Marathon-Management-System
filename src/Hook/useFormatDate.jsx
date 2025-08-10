@@ -1,0 +1,26 @@
+import { useState, useEffect } from "react";
+
+const useFormatDate = (isoDateString) => {
+  const [formattedDate, setFormattedDate] = useState("");
+
+  useEffect(() => {
+    if (!isoDateString) {
+      setFormattedDate("");
+      return;
+    }
+    try {
+      const date = new Date(isoDateString);
+
+      // "en-GB" locale use করলে date "DD/MM/YYYY" ফরম্যাটে পাওয়া যায়
+      const formatted = date.toLocaleDateString("en-GB");
+
+      setFormattedDate(formatted);
+    } catch (error) {
+      setFormattedDate("");
+    }
+  }, [isoDateString]);
+
+  return formattedDate;
+};
+
+export default useFormatDate;

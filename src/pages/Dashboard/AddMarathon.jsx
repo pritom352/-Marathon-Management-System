@@ -14,14 +14,16 @@ const AddMarathon = () => {
   const [startDate, setStartDate] = useState(null);
 
   const date = new Date();
+  console.log(date);
+  console.log(startDate);
 
   const handleAddMarathon = (e) => {
     e.preventDefault();
     const target = e.target;
     const title = target.title.value;
-    const registrationStartDate = startRegistration.toLocaleDateString("en-GB");
-    const registrationEndDate = endRegistration.toLocaleDateString("en-GB");
-    const marathonStartDate = startDate.toLocaleDateString("en-GB");
+    const registrationStartDate = startRegistration.toISOString();
+    const registrationEndDate = endRegistration.toISOString();
+    const marathonStartDate = startDate.toISOString();
 
     const location = target.location.value;
     const distance = target.distance.value;
@@ -29,7 +31,7 @@ const AddMarathon = () => {
     const image = target.image.value;
     const email = target.email.value;
 
-    const createdAt = target.createdAt.value;
+    const createdAt = date.toISOString();
 
     const totalRegistrations = [];
 

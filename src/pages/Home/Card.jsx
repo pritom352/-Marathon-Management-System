@@ -1,16 +1,20 @@
 import React, { useRef } from "react";
 import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
+import useFormatDate from "../../Hook/useFormatDate";
 
 const Card = ({ marathonData }) => {
   const {
     image,
-    registrationStartDate,
-    registrationEndDate,
+
     title,
     _id,
     location,
   } = marathonData;
+  const registrationStartDate = useFormatDate(
+    marathonData.registrationStartDate
+  );
+  const registrationEndDate = useFormatDate(marathonData.registrationEndDate);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
 
